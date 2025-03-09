@@ -21,22 +21,56 @@ By leveraging Python, Kivy, and SQLite, this solution ensures a cost-effective, 
 
 ## Success Criteria
 
-[^1]: Industries, Adafruit. “DHT11 Basic Temperature-Humidity Sensor + Extras.” Adafruit Industries Blog RSS, https://www.adafruit.com/product/386. 
-[^2]: Nelson, Carter. “Modern Replacements for DHT11 and dht22 Sensors.” Adafruit Learning System, https://learn.adafruit.com/modern-replacements-for-dht11-dht22-sensors/what-are-better-alternatives.   
-[^3]:“How to Connect dht11 Sensor with Arduino Uno.” Arduino Project Hub, https://create.arduino.cc/projecthub/pibots555/how-to-connect-dht11-sensor-with-arduino-uno-f4d239.  
-[^4]:Team, The Arduino. “What Is Arduino?: Arduino Documentation.” Arduino Documentation | Arduino Documentation, https://docs.arduino.cc/learn/starting-guide/whats-arduino.  
-[^5]:Tino. “Tino/PyFirmata: Python Interface for the Firmata (Http://Firmata.org/) Protocol. It Is Compliant with Firmata 2.1. Any Help with Updating to 2.2 Is Welcome. the Capability Query Is Implemented, but the Pin State Query Feature Not Yet.” GitHub, https://github.com/tino/pyFirmata. 
-[^6]:Python Geeks. “Advantages of Python: Disadvantages of Python.” Python Geeks, 26 June 2021, https://pythongeeks.org/advantages-disadvantages-of-python/. 
-[^7]: Real Python. “Python vs C++: Selecting the Right Tool for the Job.” Real Python, Real Python, 19 June 2021, https://realpython.com/python-vs-cpp/#memory-management. 
+The solution provides a secure and efficient user authentication system for customers, employees, and delivery drivers.
+[Issue Tackled]: Prevents unauthorized access and ensures that each user has appropriate access to platform functionalities.
 
-1. The solution provides a visual representation of the Humidity, Temperature and atmospheric pressure (HL) values inside a dormitory (Local) and outside the house (Remote) for a period of minimum 48 hours. ```** [Issue tacled] **: fill in here```
-1. ```[HL]``` The local variables will be measure using a set of sensors around the dormitory.```** [Issue tacled] **: fill in here```
-2. The solution provides a mathematical modelling for the Humidity, Temperature and atmospheric pressure (HL) levels for each Local and Remote locations. ```(SL: linear model)```, ```(HL: non-lineal model)``` ```** [Issue tacled] **: fill in here```
-3. The solution provides a comparative analysis for the Humidity, Temperature and atmospheric pressure (HL) levels for each Local and Remote locations including mean, standad deviation, minimum, maximum, and median. ```** [Issue tacled] **: fill in here```
-4. ```(SL)```The Local samples are stored in a csv file and ```(HL)``` posted to the remote server as a backup. ```** [Issue tacled] **: fill in here```
-5. The solution provides a prediction for the subsequent 12 hours for Humidity, Temperature and atmospheric pressure (HL). ```** [Issue tacled] **: fill in here```
-6. The solution includes a poster summarizing the visual representations, model and analysis created. The poster includes a recommendation about healthy levels for Humidity, Temperature and atmospheric pressure (HL). ```** [Issue tacled] **: fill in here```
+The platform allows customers to place dine-in and delivery orders through a user-friendly interface.
+[Issue Tackled]: Eliminates reliance on traditional waitstaff, reducing human error and improving ordering efficiency.
 
+Multiple payment methods, including card payments and a points-based loyalty system, are supported.
+[Issue Tackled]: Provides flexibility in payment options, enhancing customer convenience and engagement.
+
+A loyalty program is implemented, where customers earn points based on past orders and can redeem them for discounts or exclusive menu items.
+[Issue Tackled]: Encourages repeat customers and increases brand loyalty.
+
+The system includes an order-tracking feature, allowing customers to view their order status in real time.
+[Issue Tackled]: Enhances transparency and reduces customer inquiries about order progress.
+
+Delivery drivers can register, accept nearby orders, and track their earnings through a dedicated interface.
+[Issue Tackled]: Improves efficiency and ensures that deliveries are completed in a timely manner.
+
+A rating system is included to allow customers to provide feedback on orders and delivery experiences.
+[Issue Tackled]: Helps maintain high service quality by identifying areas for improvement.
+
+Restaurant employees can track their remaining shift time and mark orders as completed.
+[Issue Tackled]: Enhances workflow efficiency and ensures accurate order fulfillment.
+
+Orders and customer data are securely stored and managed using an SQLite database.
+[Issue Tackled]: Provides a lightweight, serverless storage solution that is easy to maintain and efficient for restaurant operations.
+
+The platform includes an admin dashboard where managers can monitor orders, employees, and delivery performance.
+[Issue Tackled]: Allows for better oversight and decision-making to optimize restaurant operations.
+
+A menu management system is available, enabling administrators to add, update, or remove menu items.
+[Issue Tackled]: Provides flexibility in menu updates, ensuring accurate pricing and availability.
+
+The application is built using Python and Kivy, ensuring cross-platform compatibility for mobile and desktop devices.
+[Issue Tackled]: Reduces development overhead and allows for a single codebase across different platforms.
+
+The system includes offline functionality for essential features, such as order tracking and staff shift monitoring.
+[Issue Tackled]: Ensures continued usability even in cases of internet disruptions.
+
+A notification system is implemented to send real-time updates about order status, promotions, and loyalty rewards.
+[Issue Tackled]: Keeps customers and staff informed about important updates.
+
+A reporting feature generates summaries of order trends, peak business hours, and customer preferences.
+[Issue Tackled]: Provides valuable insights for restaurant management to optimize service and marketing strategies.
+
+The system includes a feedback collection feature for customers to provide suggestions and complaints.
+[Issue Tackled]: Enables continuous improvement by gathering direct input from users.
+
+A security mechanism is in place to prevent multiple failed login attempts and unauthorized access.
+[Issue Tackled]: Protects user data and maintains system integrity.
 _TOK Connection: To what extent does ```the use of data science``` in climate research influence our understanding of environmental issues, and what knowledge questions arise regarding the ```reliability, interpretation, and ethical implications``` of data-driven approaches in addressing climate change_
 
 1. How does our use of technology shape our understanding of the environment
