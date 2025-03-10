@@ -93,9 +93,10 @@ Ultimately, your project highlights a broader debate about **data ethics, digita
 
 ## System Diagram **SL**
 
-![System Diagrams unit 2](https://github.com/user-attachments/assets/719228e9-3e4b-4e92-89a1-4a5887e0c73d)
+![Untitled presentation (1)](https://github.com/user-attachments/assets/ea85e1ea-e5ba-42df-af85-15c82b7740cc)
 
-**Fig.1** System diagram for the proposed system to visualize and analyze temperature and humidity data in our campus. Physical variables measured with the sensor DHT11 locally on an Arduino and remotely with a raspberry Pi. The latter implements an API (192.162.4.61/readings) providing access to remotely sensed data via ISAK-S network.
+
+**Fig.1** System diagram for the proposed Digital Restaurant Platform, designed to streamline order management, payment processing, and delivery coordination. Customers interact with the platform via a user-friendly interface, placing dine-in and delivery orders. The system securely stores user data and order history using an SQLite database. A Raspberry Pi server hosts the application, facilitating real-time communication between customers, employees, and delivery drivers. The platform implements an API to manage authentication, order tracking, and loyalty rewards, ensuring seamless integration across all user roles.
 
 
 ![System Diagrams unit 2 (1)](https://github.com/user-attachments/assets/7ec53d20-7afa-4279-8ac2-b5798e38f4db)
