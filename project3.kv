@@ -1,0 +1,1024 @@
+ScreenManager:
+    SplashScreen:
+    LoginScreen:
+    RegisterScreen:
+    AdminScreen:
+    AddItemScreen:
+    RemoveItemScreen:
+    AddEmployeeScreen:
+    CustomerHomeScreen:
+    ViewCart:
+    DeliveryHomeScreen:
+    EmployeeHomeScreen:
+
+<SplashScreen>:
+    name: "splash"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Image:
+            source: "logo.png"
+            size_hint: (0.3, 0.3)
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+        Label:
+            text: "Welcome to MyApp"
+            font_size: "32sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+        Button:
+            text: "Continue"
+            size_hint: (0.3, 0.08)
+            pos_hint: {"center_x": 0.5, "center_y": 0.2}
+            background_color: (0, 0, 1, 1)
+            border: (20, 20, 20, 20)
+            on_press: app.root.current = "login"
+
+<LoginScreen>:
+    name: "login"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Login"
+            font_size: "30sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.85}
+
+        TextInput:
+            id: username
+            hint_text: "Username"
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+            background_color: (0, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+        TextInput:
+            id: password
+            hint_text: "Password"
+            password: True
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            background_color: (0, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+        Button:
+            text: "Login"
+            size_hint: (0.5, 0.08)
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            background_normal: ""  
+            background_color: 0, 0, 0, 0
+            border: (20, 20, 20, 20)
+            on_press: root.login_user()
+
+            canvas.before:
+                Color:
+                    rgba: (0.5, 0.5, 1, 1)  # Light blue color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [50, 50, 50, 50]  # Adjust for more or less rounded corners
+
+        Button:
+            text: "Go to Register"
+            size_hint: (0.5, 0.08)
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+            background_normal: ""  
+            background_color: 0, 0, 0, 0
+            border: (20, 20, 20, 20)
+            on_press: app.root.current = "register"
+
+            canvas.before:
+                Color:
+                    rgba: (0.5, 0.5, 1, 1)  # Light blue color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [50, 50, 50, 50]
+
+<RegisterScreen>:
+    name: "register"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Register"
+            font_size: "30sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.85}
+
+        TextInput:
+            id: reg_username
+            hint_text: "Username"
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.68}
+            background_color: (0, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+        TextInput:
+            id: reg_password
+            hint_text: "Password"
+            password: True
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            background_color: (0, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+        TextInput:
+            id: confirm_password
+            hint_text: "Confirm Password"
+            password: True
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.52}
+            background_color: (0, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+        Spinner:
+            id: role_spinner
+            text: "Select Role"
+            values: ["Customer", "Delivery_Guy"]
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            background_normal: ""  
+            background_color: 0, 0, 0, 0
+            
+            canvas.before:
+                Color:
+                    rgba: (0.5, 0.5, 1, 1)  # Light blue color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [50, 50, 50, 50]
+
+        Button:
+            text: "Register"
+            size_hint: (0.5, 0.08)
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+            background_normal: ""  
+            background_color: 0, 0, 0, 0
+            on_press: root.register_user()
+            
+            canvas.before:
+                Color:
+                    rgba: (0.5, 0.5, 1, 1)  # Light blue color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [50, 50, 50, 50]
+
+        Button:
+            text: "Back to Login"
+            size_hint: (0.5, 0.08)
+            pos_hint: {"center_x": 0.5, "center_y": 0.2}
+            background_normal: ""  
+            background_color: 0, 0, 0, 0  # Make button itself transparent so we see RoundedRectangle
+            on_press: app.root.current = "login"
+
+            canvas.before:
+                Color:
+                    rgba: (0.5, 0.5, 1, 1)  # Light blue color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [50, 50, 50, 50]
+
+<AdminScreen>:
+    name: "AdminScreen"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Admin Screen"
+            font_size: "36sp"
+            bold: True
+            color: (0.0, 0.0, 0.5, 1)  # Dark navy blue
+            pos_hint: {"center_x": 0.5, "top": 1.1}
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: (0.6, 0.5)
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            spacing: 30
+
+            Button:
+                text: "Add Employee"
+                size_hint_y: None
+                height: 80  # Made the button bigger
+                background_normal: ""
+                background_color: (0.0, 0.0, 1.0, 1.0)  # Blue background
+                color: (1, 1, 1, 1)  # White text
+                border: (20, 20, 20, 20)
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 1, 1)  # Blue border
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                on_press: app.root.current = "AddEmployeeScreen"
+
+            Button:
+                text: "Add Item"
+                size_hint_y: None
+                height: 80  # Made the button bigger
+                background_normal: ""
+                background_color: (0.0, 0.0, 1.0, 1.0)  # Blue background
+                color: (1, 1, 1, 1)  # White text
+                border: (20, 20, 20, 20)
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 1, 1)  # Blue border
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                on_press: app.root.current = "AddItemScreen"
+
+            Button:
+                text: "Remove Item"
+                size_hint_y: None
+                height: 80  # Made the button bigger
+                background_normal: ""
+                background_color: (0.0, 0.0, 1.0, 1.0)  # Blue background
+                color: (1, 1, 1, 1)  # White text
+                border: (20, 20, 20, 20)
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 1, 1)  # Blue border
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                on_press: app.root.current = "RemoveItemScreen"
+            
+            Button:
+                text: "Back to Login"
+                size_hint_y: None
+                height: 80  # Made the button bigger
+                background_normal: ""  
+                background_color: (0.0, 0.0, 1.0, 1.0)
+                color: (1, 1, 1, 1)
+                border: (20, 20, 20, 20)
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 1, 1)  # Blue border
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                on_press: app.root.current = "login"
+
+
+<AddEmployeeScreen>:
+    name: "AddEmployeeScreen"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Add New Employee"
+            font_size: "30sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.85}
+
+        TextInput:
+            id: username_input
+            hint_text: "Username"
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.68}
+            background_color: (0, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+        TextInput:
+            id: password_input
+            hint_text: "Password"
+            password: True
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            background_color: (0, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+        TextInput:
+            id: confirm_password_input
+            hint_text: "Confirm Password"
+            password: True
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.52}
+            background_color: (0, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+        Button:
+            text: "Add Employee"
+            size_hint: (0.5, 0.08)
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+            background_normal: ""  
+            background_color: 0, 0, 0, 0
+            on_press: root.add_employee()
+            canvas.before:
+                Color:
+                    rgba: (0.5, 0.5, 1, 1)  # Light blue color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [50, 50, 50, 50]
+
+        Button:
+            text: "Back to Admin"
+            size_hint: (0.5, 0.08)
+            pos_hint: {"center_x": 0.5, "center_y": 0.2}
+            background_normal: ""  
+            background_color: 0, 0, 0, 0  # Make button itself transparent so we see RoundedRectangle
+            on_press: app.root.current = "AdminScreen"
+            canvas.before:
+                Color:
+                    rgba: (0.5, 0.5, 1, 1)  # Light blue color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [50, 50, 50, 50]
+
+
+<AddItemScreen>:
+    name: "AddItemScreen"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Add New Item"
+            font_size: "36sp"
+            bold: True
+            color: (0.0, 0.0, 0.5, 1)  # Dark navy blue
+            pos_hint: {"center_x": 0.5, "center_y": 0.88}
+
+        TextInput:
+            id: new_item_name
+            hint_text: "Item Name"
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.68}
+            background_color: (0, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+        TextInput:
+            id: new_category
+            hint_text: "Category"
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.60}
+            background_color: (0, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+        TextInput:
+            id: new_price
+            hint_text: "Price"
+            size_hint: (0.5, 0.07)
+            pos_hint: {"center_x": 0.5, "center_y": 0.52}
+            background_color: (0, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+        Button:
+            text: "Add Item"
+            size_hint: (0.5, 0.08)
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            background_normal: ""  
+            background_color: 0, 0, 0, 0
+            on_press: root.add_menu_item()
+            canvas.before:
+                Color:
+                    rgba: (0.5, 0.5, 1, 1)  # Light blue color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [50, 50, 50, 50]
+
+        Button:
+            text: "Back to Admin"
+            size_hint: (0.5, 0.08)
+            pos_hint: {"center_x": 0.5, "center_y": 0.25}
+            background_normal: ""  
+            background_color: 0, 0, 0, 0  # Make button itself transparent so we see RoundedRectangle
+            on_press: app.root.current = "AdminScreen"
+            canvas.before:
+                Color:
+                    rgba: (0.5, 0.5, 1, 1)  # Light blue color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [50, 50, 50, 50]
+
+<RemoveItemScreen>:
+    name: "RemoveItemScreen"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Remove Item"
+            font_size: "36sp"
+            bold: True
+            color: (0.0, 0.0, 0.5, 1)  # Dark navy blue
+            pos_hint: {"center_x": 0.5, "top": 1.40}
+
+        Label:
+            id: remove_item_label
+            text: "Selected item to remove: None"
+            font_size: "20sp"
+            color: (0, 0, 0, 1)  # Black text
+            pos_hint: {"center_x": 0.5, "top": 0.85}
+            size_hint_y: None
+
+        ScrollView:
+            size_hint: (0.75, 0.6)  # Adjusted height for spacing
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            GridLayout:
+                id: menu_grid
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: 150  # Increased height for spaciousness
+                row_force_default: True
+
+        BoxLayout:
+            size_hint: (0.5, 0.08)
+            pos_hint: {"center_x": 0.5, "bottom": 0.05}
+            spacing: 20
+
+            Button:
+                id: confirm_remove_btn
+                text: "Confirm Remove"
+                background_normal: ""  
+                background_color: 0, 0, 0, 0
+                on_press: root.confirm_remove_action()
+                disabled: True  # Initially disabled
+                canvas.before:
+                    Color:
+                        rgba: (1, 0, 0, 1)  # Red color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [50, 50, 50, 50]
+
+            Button:
+                text: "Back to Admin"
+                size_hint_x: 1
+                background_normal: ""  
+                background_color: 0, 0, 0, 0  # Make button itself transparent so we see RoundedRectangle
+                on_press: app.root.current = "AdminScreen"
+                canvas.before:
+                    Color:
+                        rgba: (0.5, 0.5, 1, 1)  # Light blue color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [50, 50, 50, 50]
+
+
+
+<CustomerHomeScreen>:
+    name: "CustomerHomeScreen"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        
+        Label:
+            text: "Menu"
+            font_size: "36sp"  # Increased font size for menu label
+            bold: True  # Make label bold
+            color: (0.0, 0.0, 0.5, 1)  # Dark navy blue
+            pos_hint: {"center_x": 0.5, "center_y": 0.88}  # Moved label a bit down
+
+        Label:
+            id: points_label
+            text: "Points: 0"
+            font_size: "20sp"
+            color: (0, 0, 0, 1)
+            size_hint: (0.15, 0.1)
+            pos_hint: {"right": 1, "top": 1}
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 10  # Increased space between buttons
+            size_hint: (0.15, 0.7)
+            pos_hint: {"x": 0.05, "center_y": 0.45}
+
+            Button:
+                text: "All"
+                size_hint: (1, 0.1)
+                background_color: (0, 0, 1, 1)  # Blue background
+                color: (1, 1, 1, 1)  # White text
+                border: (20, 20, 20, 20)
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 1, 1)  # Blue border
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                on_press: root.display_menu("All")
+            
+            Button:
+                text: "Sushi"
+                size_hint: (1, 0.1)
+                background_color: (0, 0, 1, 1)  # Blue background
+                color: (1, 1, 1, 1)  # White text
+                border: (20, 20, 20, 20)
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 1, 1)  # Blue border
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                on_press: root.display_menu("Sushi")
+            
+            Button:
+                text: "Gunkan/Roll"
+                size_hint: (1, 0.1)
+                background_color: (0, 0, 1, 1)  # Blue background
+                color: (1, 1, 1, 1)  # White text
+                border: (20, 20, 20, 20)
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 1, 1)  # Blue border
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                on_press: root.display_menu("Gunkan/Roll")
+            
+            Button:
+                text: "Side Dishes"
+                size_hint: (1, 0.1)
+                background_color: (0, 0, 1, 1)  # Blue background
+                color: (1, 1, 1, 1)  # White text
+                border: (20, 20, 20, 20)
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 1, 1)  # Blue border
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                on_press: root.display_menu("Side Dishes")
+            
+            Button:
+                text: "Desserts/Drinks"
+                size_hint: (1, 0.1)
+                background_color: (0, 0, 1, 1)  # Blue background
+                color: (1, 1, 1, 1)  # White text
+                border: (20, 20, 20, 20)
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 1, 1)  # Blue border
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                on_press: root.display_menu("Desserts")
+            
+
+        ScrollView:
+            size_hint: (0.75, 0.7)  # Menu takes up 80% of the screen horizontally
+            pos_hint: {"center_x": 0.6, "center_y": 0.38}  # Adjusted position to make room for the category buttons
+            GridLayout:
+                id: menu_grid
+                cols: 5
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: 150  # Increased height for spaciousness
+                row_force_default: True
+
+        Button:
+            text: "View Cart"
+            size_hint: (0.2, 0.1)
+            pos_hint: {"right": 0.95, "bottom": 0.1}  # Moved up and to the left
+            background_normal: ""
+            background_color: (0.0, 0.0, 1.0, 1.0)  # Blue background
+            color: (1, 1, 1, 1)  # White text
+            border: (20, 20, 20, 20)
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 1, 1)  # Blue border
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+            on_press: root.view_cart()
+
+        Button:
+            text: "Logout"
+            size_hint: (0.2, 0.1)
+            pos_hint: {"right": 0.35, "bottom": 0.1}
+            background_normal: ""
+            background_color: (0.0, 0.0, 1.0, 1.0)  # Blue background
+            color: (1, 1, 1, 1)  # White text
+            border: (20, 20, 20, 20)
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 1, 1)  # Blue border
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+            on_press: root.logout()
+
+<ViewCart>:
+    name: "ViewCart"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "View Cart"
+            font_size: "36sp"
+            bold: True
+            color: (0.0, 0.0, 0.5, 1)  # Dark navy blue
+            pos_hint: {"center_x": 0.5, "center_y": 0.88}
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: (0.8, 0.5)  # Lower the menu to avoid overlap
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.5
+                padding: 10
+                canvas.before:
+                    Color:
+                        rgba: (0.0, 0.0, 0.5, 1)  # Navy blue border
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                ScrollView:
+                    GridLayout:
+                        id: cart_items
+                        cols: 1
+                        size_hint_y: None
+                        height: self.minimum_height
+                        padding: 10
+                        spacing: 10
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.5
+                Label:
+                    id: cart_total
+                    text: "Total: $0.00"
+                    font_size: "25sp"
+                    bold: True
+                    color: (0, 0, 0, 1)  # Dark text
+                    size_hint_y: 0.1
+                    pos_hint: {"center_x": 0.5}
+
+                Label:
+                    id: points_label
+                    text: "Points: 0"
+                    font_size: "25sp"
+                    bold: True
+                    color: (0, 0, 0, 1)  # Dark text
+                    size_hint_y: 0.1
+                    pos_hint: {"center_x": 0.5}
+
+        Button:
+            text: "Pay"
+            size_hint: (0.2, 0.1)  # Restore original size
+            pos_hint: {"right": 1.0, "bottom": 1.0}  # Revert to original position
+            background_normal: ""
+            background_color: (0.0, 0.0, 1.0, 1.0)  # Blue background
+            color: (1, 1, 1, 1)  # White text
+            border: (20, 20, 20, 20)
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 1, 1)  
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+            on_press: root.pay()
+
+        Button:
+            text: "Back to Menu"
+            size_hint: (0.2, 0.1)  
+            pos_hint: {"left": 0.3, "bottom": 1.0}  
+            background_normal: ""
+            background_color: (0.0, 0.0, 1.0, 1.0)  
+            color: (1, 1, 1, 1) 
+            border: (20, 20, 20, 20)
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 1, 1)  # Blue border
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+            on_press: app.root.current = "CustomerHomeScreen"
+
+
+<DeliveryHomeScreen>:
+    name: "delivery_home"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (1, 1, 1, 1)  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: 'Orders Ready for Delivery'
+            font_size: '32sp'
+            color: (0, 0, 0, 1)  # Black text
+        ScrollView:
+            GridLayout:
+                id: orders_grid
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 0, 1)  # Black frame
+                    Line:
+                        width: 2
+                        rectangle: (self.x, self.y, self.width, self.height)
+        Button:
+            text: 'Logout'
+            size_hint_y: None
+            height: 25  # 50% smaller
+            background_normal: ''
+            background_color: (0, 0, 0.5, 1)  # Navy blue
+            color: (1, 1, 1, 1)  # White text
+            on_press: root.logout()
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 0.5, 1)  # Navy blue
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20,]
+
+<CustomButton@Button>:
+    background_normal: ''
+    background_color: (0, 0, 0.5, 1)  # Navy blue
+    color: (1, 1, 1, 1)  # White text
+    size_hint_y: None
+    height: 50
+    canvas.before:
+        Color:
+            rgba: (0, 0, 0.5, 1)  # Navy blue
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20,]
+
+<CustomLabel@Label>:
+    color: (0, 0, 0, 1)  # Black text
+
+<CustomButton@Button>:
+    background_normal: ''
+    background_color: (0, 0, 0.5, 1)  # Navy blue
+    color: (1, 1, 1, 1)  # White text
+    size_hint_y: None
+    height: 50
+    canvas.before:
+        Color:
+            rgba: (0, 0, 0.5, 1)  # Navy blue
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20,]
+
+<CustomLabel@Label>:
+    color: (0, 0, 0, 1)  # Black text
+
+<DineOrDeliveryScreen>:
+    name: "dine_or_delivery"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (1, 1, 1, 1)  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: 'Choose Dining Option'
+            font_size: '32sp'
+            color: (0, 0, 0, 1)  # Black text
+            bold: True
+            size_hint_y: None
+            height: 50
+        CustomButton:
+            text: 'Eat In'
+            on_press: root.choose_eat_in()
+        CustomButton:
+            text: 'Delivery'
+            on_press: root.manager.current = 'delivery_address'
+
+<DeliveryAddressScreen>:
+    name: "delivery_address"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        Label:
+            text: 'Enter Delivery Address'
+            font_size: '32sp'
+            color: (0, 0, 0, 1)  # Black text
+            bold: True
+            size_hint_y: None
+            height: 50
+        TextInput:
+            id: address_input
+            hint_text: 'Address'
+            multiline: False
+        CustomButton:
+            text: 'Submit'
+            on_press: root.submit_address()
+
+<DeliveryHomeScreen>:
+    name: "delivery_home"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (1, 1, 1, 1)  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: 'Orders Ready for Delivery'
+            font_size: '32sp'
+            color: (0, 0, 0, 1)  # Black text
+            bold: True
+            size_hint_y: None
+            height: 50
+        ScrollView:
+            GridLayout:
+                id: orders_grid
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 20
+                padding: 10
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 0, 1)  # Black frame
+                    Line:
+                        width: 2
+                        rectangle: (self.x, self.y, self.width, self.height)
+        Button:
+            text: 'Logout'
+            size_hint_y: None
+            height: 25  # 50% smaller
+            background_normal: ''
+            background_color: (0, 0, 0.5, 1)  # Navy blue
+            color: (1, 1, 1, 1)  # White text
+            on_press: root.logout()
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 0.5, 1)  # Navy blue
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20,]
+
+<EmployeeHomeScreen>:
+    name: "EmployeeHomeScreen"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (1, 1, 1, 1)  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: 'Ongoing Orders'
+            font_size: '32sp'
+            color: (0, 0, 0, 1)  # Black text
+            bold: True
+            size_hint_y: None
+            height: 50
+        ScrollView:
+            GridLayout:
+                id: orders_grid
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 20
+                padding: 10
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 0, 1)  # Black frame
+                    Line:
+                        width: 2
+                        rectangle: (self.x, self.y, self.width, self.height)
+        Label:
+            id: shift_timer
+            font_size: "20sp"
+            color: (0, 0, 0, 1)
+            size_hint_y: None
+            height: 30
+            pos_hint: {"right": 1, "top": 0.1}
+        Button:
+            text: 'Logout'
+            size_hint_y: None
+            height: 25  # 50% smaller
+            background_normal: ''
+            background_color: (0, 0, 0.5, 1)  # Navy blue
+            color: (1, 1, 1, 1)  # White text
+            on_press: root.logout()
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 0.5, 1)  # Navy blue
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20,]
