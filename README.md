@@ -102,6 +102,11 @@ Ultimately, your project highlights a broader debate about **data ethics, digita
 
 ![Untitled design](https://github.com/user-attachments/assets/ffa97312-cd5b-47f1-9ed7-97d72c561f5f)
 
+## flowchart
+
+![image](https://github.com/user-attachments/assets/56c9e0ca-addd-464a-be32-5c587e3057ea)
+
+
 
 ## Record of Tasks
 
