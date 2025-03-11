@@ -98,13 +98,19 @@ Ultimately, your project highlights a broader debate about **data ethics, digita
 
 **Fig.1** System diagram for the proposed Digital Restaurant Platform, designed to streamline order management, payment processing, and delivery coordination. Customers interact with the platform via a user-friendly interface, placing dine-in and delivery orders. The system securely stores user data and order history using an SQLite database. A Raspberry Pi server hosts the application, facilitating real-time communication between customers, employees, and delivery drivers. The platform implements an API to manage authentication, order tracking, and loyalty rewards, ensuring seamless integration across all user roles.
 
-##Wireframe
+## Wireframe
 
 ![Untitled design](https://github.com/user-attachments/assets/ffa97312-cd5b-47f1-9ed7-97d72c561f5f)
 
 ## flowchart
 
 ![image](https://github.com/user-attachments/assets/56c9e0ca-addd-464a-be32-5c587e3057ea)
+
+## UML diagram of Proposed Solution
+
+![image](https://github.com/user-attachments/assets/1d019c96-68c5-4bbf-a06f-14ec032c1036)
+
+
 
 
 
