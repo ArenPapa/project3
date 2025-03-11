@@ -91,7 +91,7 @@ Ultimately, your project highlights a broader debate about **data ethics, digita
 
 # Criteria B: Design
 
-## System Diagram **SL**
+## System Diagram
 
 ![Untitled presentation (1)](https://github.com/user-attachments/assets/ea85e1ea-e5ba-42df-af85-15c82b7740cc)
 
