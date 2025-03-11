@@ -110,7 +110,17 @@ Ultimately, your project highlights a broader debate about **data ethics, digita
 
 ![image](https://github.com/user-attachments/assets/1d019c96-68c5-4bbf-a06f-14ec032c1036)
 
+## ER diagram of database
 
+![image](https://github.com/user-attachments/assets/bd19f5a9-66b6-4ad6-a07b-ec0270749b8c)
+
+## flow diagram login function
+
+![image](https://github.com/user-attachments/assets/1ea0871b-0db6-4e97-9c5a-8813e6ca100e)
+
+## flow diagram Register function 
+
+![image](https://github.com/user-attachments/assets/dddb5425-db92-40c2-bb6b-e8b702c921cb)
 
 
 
