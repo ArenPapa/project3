@@ -103,41 +103,42 @@ Lastly, my project also invokes a broader discussion of **data ethics, digital p
 ## Wireframe
 
 ![Untitled design](https://github.com/user-attachments/assets/ffa97312-cd5b-47f1-9ed7-97d72c561f5f)
-**Fig.2**
+**Fig.2**  Wireframe of the application design
 
 ## flowchart
 
 ![image](https://github.com/user-attachments/assets/56c9e0ca-addd-464a-be32-5c587e3057ea)
-**Fig.3**
+**Fig.3** describing the ordering process of the sold product
 
-## UML diagram of Proposed Solution
+## UML diagram 
 
 ![image](https://github.com/user-attachments/assets/1d019c96-68c5-4bbf-a06f-14ec032c1036)
-**Fig.4**
+**Fig.4** UML diagram of proposed solution
 
-## ER diagram of database
+
+## ER diagram 
 
 ![image](https://github.com/user-attachments/assets/bd19f5a9-66b6-4ad6-a07b-ec0270749b8c)
 
-**Fig.5**
+**Fig.5** ER diagram of database
 
-## flow diagram login function
+## flow diagram
 
 ![image](https://github.com/user-attachments/assets/1ea0871b-0db6-4e97-9c5a-8813e6ca100e)
 
-**Fig.6**
+**Fig.6** flow diagram login function
 
-## flow diagram Register function 
+## flow diagram
 
 ![image](https://github.com/user-attachments/assets/dddb5425-db92-40c2-bb6b-e8b702c921cb)
 
-**Fig.7**
+**Fig.7** flow diagram Register function
 
-## flow diagram Update points function
+## flow diagram
 
 ![image](https://github.com/user-attachments/assets/75f03f3e-111d-4b99-8ae1-0c798cb8f362)
 
-**Fig.8**
+**Fig.8** flow diagram Update points function
 
 
 ## Record of Tasks
