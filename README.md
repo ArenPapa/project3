@@ -7,18 +7,18 @@
 
 ## Problem definition
 
-``` I propose developing a cutting-edge digital platform to transform operations at my bustling sushi restaurant by replacing traditional waitstaff with a seamless, app-based ordering system. This innovative solution will allow customers to place dine-in and delivery orders directly from their mobile devices, supporting various payment methods, including credit cards and mobile payments. A unique loyalty program will introduce a restaurant-specific currency, rewarding customers based on past orders and allowing them to redeem points for discounts or exclusive menu items.Additionally, the platform will feature a dedicated section for delivery drivers, enabling them to sign up, accept nearby orders, and track their earnings in real time. A built-in rating system will maintain service quality, while an instant payout feature will help attract and retain delivery partners. Restaurant staff will also benefit from the platform, as they will be able to monitor their remaining shift time and mark orders as completed, ensuring efficient service and streamlined workflow. ```
+``` I recommend developing a cutting-edge digital platform to modernize operations at my busy sushi restaurant by replacing traditional waiters with a bug-free, app-based ordering system. The new system will allow customers to order dine-in and delivery food directly from their smartphone devices, payment to be made through various channels, including credit cards and mobile payments. A unique loyalty system will generate restaurant-currency based on rewarding existing customers for historical purchases and allow redemption points into discounts or value menu offerings. The platform also includes a specific section for drivers where they may register, pick up orders around them, and see their payments in real-time. An integrated rating system will guarantee service quality, and an instant payout will help in the recruitment and retention of delivery partners. Restaurant personnel will also be assisted through the platform as they will be able to see how much time is left in their shift and fulfill orders, thus guaranteeing smooth service and efficient workflow. ```
 
 ## Proposed Solution
-To meet the client’s requirements, an optimal solution involves developing a digital platform using Python and Kivy to handle both customer interactions and restaurant management. This platform will replace traditional waitstaff with an intuitive mobile ordering system, allowing customers to place dine-in and delivery orders directly from their devices. Additionally, it will include features such as a loyalty program, a driver management system, and staff shift tracking.
+To meet the needs of the client, an ideal solution is to develop a Python and Kivy-based digital platform to handle both restaurant operations and customer interactions. The platform will replace traditional waiters with a convenient mobile ordering system, where customers can order dine-in and delivery orders on their mobile devices. It will also include other features such as a loyalty program, driver management, and shift tracking for employees.
 
-For data storage and management, SQLite will be used as the primary database solution. SQLite is a lightweight, serverless database engine that integrates seamlessly with Python, making it an excellent choice for this application. Unlike heavier database management systems such as MySQL or PostgreSQL, SQLite requires no dedicated server, reducing deployment complexity and maintenance costs. Given that this platform is intended for a single restaurant rather than a large-scale enterprise with high concurrent transactions, SQLite provides the right balance between efficiency and simplicity. Additionally, its ability to store data locally ensures fast read/write speeds, making it ideal for tracking orders, managing loyalty points, and storing shift schedules without significant overhead.
+For data storage and management, SQLite will be used as the underlying database solution. SQLite is a lightweight, serverless database engine with ideal Python integration, making it a perfect match for this program. Compared to heavier database management solutions such as MySQL or PostgreSQL, SQLite does not require an independent server, hence reducing deployment and maintenance costs. Since it is for a single restaurant and not a high-traffic company with huge simultaneous transactions, SQLite is precisely the right amount of efficiency for convenience. Being able to store data on the local storage, it allows for fast read and write rates for order tracking, loyalty points, and storing shift schedules with little overhead.
 
-Given the need for cross-platform compatibility, a visually rich user interface, and efficient real-time updates, Python and Kivy are the most suitable choices for development. Python’s open-source nature, extensive library support, and platform independence make it ideal for long-term scalability and future enhancements. Kivy, a Python framework designed for multi-touch applications, provides a highly flexible UI that runs seamlessly on both mobile and desktop devices without requiring separate codebases. Compared to alternatives like Java or Swift, Kivy allows for rapid development with fewer lines of code, making it more efficient for a small development team.
+Because of the need for cross-platform development, rich user interface, and real-time updates in an efficient manner, Python and Kivy are the most suitable ones to be implemented. The open-source nature of Python, vast library support, and cross-platform compatibility make it best for long-term scalability and possible future growth. Kivy, being a Python framework for multi-touch interfaces, provides an extremely dynamic UI that can be run seamlessly on both mobile and desktop platforms without the requirement for different codebases. In comparison to others like Java or Swift, Kivy is more suitable for rapid development with fewer lines of code, hence saving time for a small development team.
 
-Additionally, Kivy’s built-in event-driven architecture simplifies user interactions, ensuring a smooth ordering experience. Its GPU-accelerated rendering engine enhances performance, allowing for fluid animations and real-time updates, crucial for tracking order status and shift times. Unlike web-based alternatives that rely heavily on internet connectivity, a Kivy-based application can function locally with offline capabilities, reducing dependency on external servers and improving reliability.
+In addition, Kivy's event-driven nature from the ground up simplifies user interactions, making the ordering experience seamless. Its GPU-accelerated rendering also enhances performance by offering seamless animation and real-time updates, critical for order status monitoring and shift scheduling. Unlike internet-based web-based applications, a Kivy-developed application can be utilized locally with offline capabilities, reducing reliance on external servers and increasing reliability.
 
-By leveraging Python, Kivy, and SQLite, this solution ensures a cost-effective, scalable, and user-friendly application that optimizes restaurant operations, enhances customer satisfaction, and improves delivery logistics.
+Using Python, Kivy, and SQLite, this solution offers a cost-effective, scalable, and easy-to-use application that optimizes restaurant operations, enhances customer satisfaction, and simplifies delivery logistics.
 
 ## Success Criteria
 
@@ -78,16 +78,18 @@ By leveraging Python, Kivy, and SQLite, this solution ensures a cost-effective, 
 
 
 ### **TOK Connection: Ethics of Data Collection and Privacy in Digital Platforms**  
+My website collects and keeps a variety of user data, from sign-up and order history, loyalty point records, to delivery driver performance. This is a major ethical concern with respect to privacy, safety, and consent and relates to both **Technology** and **Human Sciences** as Areas of Knowledge. The ethical problem I have to weigh is **the level to which users should control their own data and the level to which I, as a businessperson, can collect and use that data to enhance business efficiency.
+My biggest concern is the issue of **data collection informed consent**. My users are interacting with my system on a daily basis without, perhaps, being adequately informed regarding how their data is collected and processed. Like most modern applications, my system is automatically collecting customer behavior, order frequency, and worker work hours. Unless I have explicit user consent forms or clear policies, though, it is ethically problematic as to whether users are properly informed regarding how their data is being used. This is part of a broader **epistemological problem**:
+*How much do data collection secrecy and lack of transparency affect ethical responsibility in digital systems?*
+I realize that most users do not read privacy policies during sign-up to use services, so the issue is one of whether I should do more to get my customers completely informed regarding the implications of use on my system.
 
-Your digital restaurant platform collects and stores various forms of user data, including personal login credentials, order history, loyalty points, and delivery driver performance metrics. This raises significant ethical concerns about privacy, security, and consent, which are central issues in both the **Human Sciences** and **Technology** as Areas of Knowledge. The ethical dilemma revolves around **how much control users should have over their own data and to what extent businesses should be allowed to collect and use that data for operational efficiency.**  
+One more significant ethical decision that I have to make is **the balance between convenience and security** on websites. My system hashes passwords using bcrypt, providing a first level of protection, but it isn't implementing more sophisticated protection methods, including two-factor protection. This creates the dilemma between requiring the security to be strong enough to protect users' data and to be simple enough to be convenient to employees and customers to log in. A system based on convenience could provide an entrance to the hackers to access the users' data. If it is, instead, too complicated, it would discourage the users to interact with my system. This issue compels me to ask: *How do I determine the ethical responsibility to protect the users' data?* Am I to opt for convenience, or do I have the ethical responsibility to implement protection mechanisms more sophisticated than a simple hashing?
 
-One of the primary concerns is the issue of **informed consent in data collection**. Users interact with digital systems daily, often without fully understanding how their data is being stored and processed. Your platform, like many modern applications, automatically tracks customer behavior, order frequency, and staff work hours. However, if the platform does not provide clear policies or explicit user consent agreements, it becomes ethically questionable whether users are truly aware of how their data is being used. This reflects a broader **epistemological question**: *To what extent does a lack of transparency in data collection affect ethical responsibility in digital platforms?* Many users do not read privacy policies before signing up for services, which raises the question of whether businesses should take extra steps to ensure their customers fully understand the implications of using the platform.  
+Besides security, my platform also monitors users' interactions to automate business processes, including customer visits being tracked within the loyalty program and driver performance based on driver ratings and revenues. Though the data streamline quality of service, they raise concerns regarding **digital surveillance and behavioral monitoring**. When a delivery driver obtains a few negative ratings, his or her likelihood to get subsequent orders may be reduced, and we have a scenario where algorithms, instead of discretion, decide economic opportunity. Similarly, I target promotions based on past customer spend, and the issue is as to whether I am, in effect, manipulating consumer behavior in a way to reduce their choice. This is an important ethical concern: *At what point is data collection digital surveillance, and how do we balance data collection and human freedom?* While data tracking is good business, too much monitoring could result in a world where consumers are unknowingly manipulated by algorithms, as there have been concerns raised regarding tech leaders such as Amazon, Uber, or Google.
 
-Another key ethical dilemma is the **trade-off between security and convenience** in digital platforms. Your system encrypts passwords using bcrypt, which adds a layer of security, but it does not incorporate more advanced protection mechanisms, such as two-factor authentication. This presents a conflict between making security strict enough to protect user data and keeping it simple enough for customers and employees to log in quickly. A system that prioritizes convenience over security may lead to vulnerabilities, making it easier for hackers to exploit user data. On the other hand, if security measures are too complex, they may discourage users from engaging with the platform. This dilemma raises the question: *How do we determine the ethical responsibility of protecting user data in digital systems?* Should businesses prioritize their own efficiency, or do they have a duty to implement security protocols that go beyond basic encryption?  
+Lastly, my project also invokes a broader discussion of **data ethics, digital privacy, and corporate consumer relations as a power relation**. In the age of information, knowledge is increasingly collected by stealth, with users unaware how their personal data is used. This brings broader epistemological questions: *Does my system really "know" a customer’s preferences by monitoring what they are buying? To what extent should individuals be able to control their own digital trail?* In discussing the ethical implications of my platform, I am wrestling with basic **TOK issues of the nature of knowledge, the ethical implications of technology, and limits on digital surveillance in modern society**.
 
-Beyond security, your platform also tracks user interactions to enhance business operations, such as monitoring customer visits for the loyalty program and tracking driver performance through ratings and earnings. While this data can help optimize service quality, it raises concerns about **digital surveillance and behavioral tracking**. If a delivery driver receives a few poor ratings, their ability to receive future orders could be affected, creating a system where algorithms, rather than human judgment, determine economic opportunities. Similarly, customers may receive targeted promotions based on their past spending habits, raising the question of whether businesses are subtly influencing consumer behavior in ways that limit their autonomy. This brings up an essential ethical issue: *At what point does data collection become digital surveillance, and how does this impact human freedom?* While tracking data is beneficial for business, excessive monitoring could create an environment where users are unknowingly manipulated by algorithms, much like the concerns raised with tech giants such as Amazon, Uber, or Google.  
 
-Ultimately, your project highlights a broader debate about **data ethics, digital privacy, and the power dynamics between businesses and consumers**. In the age of information, knowledge is often collected through invisible processes, leaving users with little awareness of how their personal information is being used. This leads to larger epistemological questions: *Can a system truly "know" a customer’s preferences just by tracking their purchases? How much control should individuals have over their own digital footprint?* By examining the ethical implications of your platform, you engage with fundamental **TOK concepts related to the nature of knowledge, ethics in technology, and the limits of digital surveillance in modern society**.
 
 # Criteria B: Design
 
@@ -96,35 +98,46 @@ Ultimately, your project highlights a broader debate about **data ethics, digita
 ![Untitled presentation (1)](https://github.com/user-attachments/assets/ea85e1ea-e5ba-42df-af85-15c82b7740cc)
 
 
-**Fig.1** System diagram for the proposed Digital Restaurant Platform, designed to streamline order management, payment processing, and delivery coordination. Customers interact with the platform via a user-friendly interface, placing dine-in and delivery orders. The system securely stores user data and order history using an SQLite database. A Raspberry Pi server hosts the application, facilitating real-time communication between customers, employees, and delivery drivers. The platform implements an API to manage authentication, order tracking, and loyalty rewards, ensuring seamless integration across all user roles.
+**Fig.1** System diagram of the proposed Digital Restaurant Platform, designed to streamline order management, payment processing, and delivery coordination. Customers interact with the platform via an intuitive interface, placing dine-in and delivery orders. The system securely saves user information and order history using an SQLite database. A Raspberry Pi server hosts the application, facilitating real-time interaction among customers, employees, and delivery drivers. The system utilizes an API to manage authentication, order status, and loyalty rewards to ensure a seamless experience for all types of users.
 
 ## Wireframe
 
 ![Untitled design](https://github.com/user-attachments/assets/ffa97312-cd5b-47f1-9ed7-97d72c561f5f)
+**Fig.2**
 
 ## flowchart
 
 ![image](https://github.com/user-attachments/assets/56c9e0ca-addd-464a-be32-5c587e3057ea)
+**Fig.3**
 
 ## UML diagram of Proposed Solution
 
 ![image](https://github.com/user-attachments/assets/1d019c96-68c5-4bbf-a06f-14ec032c1036)
+**Fig.4**
 
 ## ER diagram of database
 
 ![image](https://github.com/user-attachments/assets/bd19f5a9-66b6-4ad6-a07b-ec0270749b8c)
 
+**Fig.5**
+
 ## flow diagram login function
 
 ![image](https://github.com/user-attachments/assets/1ea0871b-0db6-4e97-9c5a-8813e6ca100e)
+
+**Fig.6**
 
 ## flow diagram Register function 
 
 ![image](https://github.com/user-attachments/assets/dddb5425-db92-40c2-bb6b-e8b702c921cb)
 
+**Fig.7**
+
 ## flow diagram Update points function
 
 ![image](https://github.com/user-attachments/assets/75f03f3e-111d-4b99-8ae1-0c798cb8f362)
+
+**Fig.8**
 
 
 ## Record of Tasks
