@@ -197,13 +197,9 @@ Lastly, my project also invokes a broader discussion of **data ethics, digital p
 
 
 
-# Criteria C: Development (around 1000 word max)
+# Criteria C: Development 
 
-## List of techniques used
 
-1. API communication with remote server
-2. Filtering using moving average
-3. 
 
 ---
 
