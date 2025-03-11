@@ -528,4 +528,4 @@ This method implements a loyalty/reward system that grants points based on time 
 
 # Criteria D: Functionality
 
-A 7 min video demonstrating the proposed solution with narration
+https://drive.google.com/file/d/1lSS-8jr-5hv-f8JYAo7rSAsre7E_ECIw/view?usp=sharing
