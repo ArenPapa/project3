@@ -84,6 +84,11 @@ By using Kivy, Python, and SQLite, the restaurant will have a cost-effective, ef
 
 ## client approval of the success criteria 
 
+<img width="1065" alt="Screenshot 2025-03-13 at 10 19 13" src="https://github.com/user-attachments/assets/54f10679-d59c-4573-a0b1-ae49df6059bb" />
+<img width="1102" alt="Screenshot 2025-03-13 at 10 19 21" src="https://github.com/user-attachments/assets/35191635-5c81-46e7-97ed-dd34745d8b0f" />
+<img width="794" alt="Screenshot 2025-03-13 at 10 19 27" src="https://github.com/user-attachments/assets/8a0dd5b4-b8a3-4c8c-a74a-556fdc157eae" />
+
+
 ### **TOK Connection: Ethics of Data Collection and Privacy in Digital Platforms**  
 My website collects and keeps a variety of user data, from sign-up and order history, loyalty point records, to delivery driver performance. This is a major ethical concern with respect to privacy, safety, and consent and relates to both **Technology** and **Human Sciences** as Areas of Knowledge. The ethical problem I have to weigh is **the level to which users should control their own data and the level to which I, as a businessperson, can collect and use that data to enhance business efficiency.
 My biggest concern is the issue of **data collection informed consent**. My users are interacting with my system on a daily basis without, perhaps, being adequately informed regarding how their data is collected and processed. Like most modern applications, my system is automatically collecting customer behavior, order frequency, and worker work hours. Unless I have explicit user consent forms or clear policies, though, it is ethically problematic as to whether users are properly informed regarding how their data is being used. This is part of a broader **epistemological problem**:
