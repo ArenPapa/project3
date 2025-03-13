@@ -232,48 +232,64 @@ Lastly, my project also invokes a broader discussion of **data ethics, digital p
 ## Code Techniques Used
 ### 1. Authentication & Security
 Password Hashing – Secure storage and verification of passwords using bcrypt.
+
 Role-Based Access Control (RBAC) – Different user roles (Customer, Employee, Driver, Admin) with specific permissions.
+
 Rate Limiting – Brute-force protection by tracking failed login attempts.
+
 Input Sanitization – Preventing SQL injection and ensuring safe user input.
 
 ### 2. Database Management
 Relational Database Management – Using SQLite for structured data storage.
+
 Schema Validation & Migration – Ensuring tables have the correct structure.
+
 Data Persistence – Storing user, order, and transaction data securely.
 
 ### 3. User Interface & Interaction
 GUI Framework Usage – Kivy for cross-platform UI development.
+
 Event-Driven Programming – Handling user actions dynamically.
+
 Canvas Rendering – Custom UI elements using Kivy graphics.
 
 ### 4. State Management & Navigation
 Finite State Machine – ScreenManager handles multiple app screens.
+
 Asynchronous Scheduling – Background tasks and UI transitions using Clock.schedule_once.
 
 ### 5. Order & Transaction Processing
 CRUD Operations – Creating, reading, updating, and deleting data in SQLite.
+
 Order State Management – Tracking order statuses (Pending, Ongoing, Completed).
+
 Background Processing – Reward points mining based on user activity.
 
 ### 6. Data Structures & Algorithms
 Dictionary-Based Caching – Storing session-based cart data.
+
 List-Based Menu Storage – Efficiently managing menu items.
+
 Loop-Based Processing – Iterating through user input and database queries.
 
 ### 7. Offline Functionality
-Local Storage – Data is stored and accessed even without an internet connection.
+Local Storage – Data is stored and accessed even without an internet connection.\
+
 Persistent UI State – Orders and cart data remain saved across sessions.
 
 ### 8. Notifications & Feedback
 Message Queue System – Storing unread notifications in a database.
+
 User Input Handling – Collecting and processing customer feedback.
 
 ### 9. Payment & Rewards
 Virtual Currency System – Loyalty points as an alternative payment method.
+
 Transactional Integrity – Ensuring balance updates after payments.
 
 ### 10. Performance Optimization
 Lazy Loading – Fetching data only when needed for efficiency.
+
 Indexed Searching – Optimizing queries for menu items and orders.
 
 
