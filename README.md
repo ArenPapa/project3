@@ -75,9 +75,6 @@ By using Kivy, Python, and SQLite, the restaurant will have a cost-effective, ef
 17. **A security mechanism is in place to prevent multiple failed login attempts and unauthorized access.**  
    **[Issue Tackled]**: Protects user data and maintains system integrity.  
 
-18. **The final project documentation includes an overview of the features, implementation details, and impact assessment.**  
-   **[Issue Tackled]**: Ensures maintainability and provides a reference for future enhancements.
-
     
 ## client proof of problem definition 
 <img width="1117" alt="Screenshot 2025-03-13 at 10 09 27" src="https://github.com/user-attachments/assets/24268737-7b5c-4cea-8874-d462e3331b89" />
@@ -229,7 +226,6 @@ Lastly, my project also invokes a broader discussion of **data ethics, digital p
 | SC15 - Reporting and analytics | Functional | Generate order trend reports | Report displays accurate order data |
 | SC16 - Customer feedback collection | Functional | Submit a suggestion or complaint | Feedback is stored and visible in admin panel |
 | SC17 - Security - Preventing unauthorized logins | Security | Attempt multiple failed logins | Account is locked temporarily |
-| SC18 - Documentation completeness | Usability | Review documentation | Information is clear and complete |
 
 
 
