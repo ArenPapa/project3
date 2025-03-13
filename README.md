@@ -298,6 +298,9 @@ Indexed Searching – Optimizing queries for menu items and orders.
 ### **1 Login Process**
 ### **Code:**
 ```python
+import sqlite3
+import time
+
 def login_user(self):
     username = sanitize_input(self.ids.username.text)  # Prevent SQL injection
     password = self.ids.password.text  # Get password input
@@ -308,23 +311,23 @@ def login_user(self):
         if attempts >= 5:
             if time.time() - lock_time < 300:  # 5 minutes lockout
                 self.show_popup("Too many failed attempts. Try again in 5 minutes.")
-                return
+                return  # Exit function
             else:
-                failed_attempts[username] = [0, time.time()]  # Reset lockout timer
+                failed_attempts[username] = [0, time.time()]  # Reset failed attempts counter
 
-    # Connect to database and fetch stored password hash
-    conn = sqlite3.connect(database)
+    # Connect to the database and fetch stored password hash
+    conn = sqlite3.connect(database)  # Establish database connection
     cursor = conn.cursor()
-    cursor.execute("SELECT password, role FROM users WHERE username = ?", (username,))
-    user = cursor.fetchone()
-    conn.close()
+    cursor.execute("SELECT password, role FROM users WHERE username = ?", (username,))  # Secure query execution
+    user = cursor.fetchone()  # Fetch user details
+    conn.close()  # Close database connection
 
     # If user exists and password is correct
     if user:
-        stored_hash, role = user
-        if check_password(password, stored_hash):
+        stored_hash, role = user  # Extract stored password hash and role
+        if check_password(password, stored_hash):  # Verify password
             if username in failed_attempts:
-                del failed_attempts[username]  # Reset failed attempts
+                del failed_attempts[username]  # Reset failed attempts upon successful login
 
             # Redirect user based on role
             if role == "customer":
@@ -339,19 +342,20 @@ def login_user(self):
             elif role == "admin":
                 self.manager.current = "AdminScreen"
                 self.manager.get_screen('AdminScreen').username = username
-            return
+            return  # Exit function after successful login
 
     # Handle incorrect credentials
     if username in failed_attempts:
-        failed_attempts[username][0] += 1
+        failed_attempts[username][0] += 1  # Increment failed attempt counter
     else:
-        failed_attempts[username] = [1, time.time()]
+        failed_attempts[username] = [1, time.time()]  # Initialize failed attempt counter
 
-    remaining_attempts = 5 - failed_attempts[username][0]
+    remaining_attempts = 5 - failed_attempts[username][0]  # Calculate remaining attempts
     if remaining_attempts > 0:
-        self.show_popup(f"Invalid credentials. {remaining_attempts} attempts remaining.")
+        self.show_popup(f"Invalid credentials. {remaining_attempts} attempts remaining.")  # Notify user of remaining attempts
     else:
-        self.show_popup("Too many failed attempts. Try again in 5 minutes.")
+        self.show_popup("Too many failed attempts. Try again in 5 minutes.")  # Notify user of lockout
+
 ```
 ### **Detailed Explanation:**
 ## Detailed Analysis of `login_user` Method
