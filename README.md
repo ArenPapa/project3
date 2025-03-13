@@ -196,34 +196,40 @@ Lastly, my project also invokes a broader discussion of **data ethics, digital p
 
 ## Test Plan
 
-| **Test Number** | **Test Scenario**                                              | **Expected Outcome**                                      | **Actual Outcome** | **Status (Pass/Fail)** | **Comments/Notes** |
-|---------------|----------------------------------------------------------------|--------------------------------------------------|----------------|-----------------|----------------|
-| 1             | Register as a customer                                        | Customer account is successfully created.       |                |                 |                |
-| 2             | Register as a driver                                          | Driver account is successfully created.         |                |                 |                |
-| 3             | Log in as a customer                                          | Customer can log in with valid credentials.     |                |                 |                |
-| 4             | Make a dine-in order                                          | Order is placed successfully.                   |                |                 |                |
-| 5             | Make a delivery order                                         | Delivery order is placed successfully.          |                |                 |                |
-| 6             | Try to pay with points                                        | Points are deducted correctly, and order is completed. |                |                 |                |
-| 7             | Wait for loyalty points to refresh                            | Points increase based on time spent.            |                |                 |                |
-| 8             | Make more orders to see if point frequency increases          | Points are awarded at an increasing rate.       |                |                 |                |
-| 9             | Give feedback to the restaurant                              | Feedback is submitted and stored.               |                |                 |                |
-| 10            | Log out as customer                                          | User is logged out successfully.                |                |                 |                |
-| 11            | Log in as admin (Username: admin, Password: adminpassword)    | Admin successfully logs in.                     |                |                 |                |
-| 12            | Try to add things to the menu                                | New items appear on the menu.                   |                |                 |                |
-| 13            | Try to remove things from the menu                           | Selected menu items are removed.                |                |                 |                |
-| 14            | Assign new employees                                         | Employees are added successfully.               |                |                 |                |
-| 15            | Look at customer feedback                                   | Feedback is visible in the admin dashboard.     |                |                 |                |
-| 16            | Log out as admin                                            | Admin logs out successfully.                    |                |                 |                |
-| 17            | Log in as an employee                                       | Employee successfully logs in.                  |                |                 |                |
-| 18            | Check if shift timer works properly                         | Timer runs correctly, tracking work duration.   |                |                 |                |
-| 19            | Try to mark orders as complete                             | Orders are updated to "Completed" status.      |                |                 |                |
-| 20            | Log out as employee                                        | Employee logs out successfully.                 |                |                 |                |
-| 21            | Log in as a driver                                         | Driver successfully logs in.                    |                |                 |                |
-| 22            | Try to accept orders                                       | Driver can see and accept available orders.    |                |                 |                |
-| 23            | Look at payment and earnings wallet                        | Driver earnings are displayed correctly.        |                |                 |                |
-| 24            | Mark orders as delivered                                   | Order status updates to "Delivered."           |                |                 |                |
-| 25            | Log out as driver                                          | Driver logs out successfully.                   |                |                 |                |
-
+| **Test** | **Type** | **Process (Input)** | **Expected Output** |
+|----------|---------|--------------------|---------------------|
+| SC1 - User authentication - Login with correct credentials | Security | Enter valid username and password | User successfully logs in |
+| SC1 - User authentication - Login with incorrect credentials | Security | Enter incorrect username or password | Login is denied, error message displayed |
+| SC1 - User authentication - Multiple failed attempts | Security | Enter incorrect credentials multiple times | Account is temporarily locked |
+| SC1 - User authentication - Role-based access | Security | Log in as customer, employee, and delivery driver | Each role accesses only their permitted functionalities |
+| SC2 - Customer order placement - Dine-in order | Functional | Select dine-in, choose items, and place order | Order is recorded and displayed on restaurant system |
+| SC2 - Customer order placement - Delivery order | Functional | Select delivery, enter address, and place order | Order is recorded, and delivery is assigned |
+| SC3 - Payment processing - Card payment | Functional | Enter card details and confirm payment | Payment is processed, and receipt is generated |
+| SC3 - Payment processing - Loyalty points | Functional | Apply loyalty points for payment | Points are deducted, and transaction is confirmed |
+| SC4 - Loyalty program - Points accumulation | Functional | Complete a purchase | Points are correctly added to customer account |
+| SC4 - Loyalty program - Points redemption | Functional | Redeem points for a discount or menu item | Points are deducted, and reward is applied |
+| SC5 - Order tracking - Customer view | Functional | Check order status on app | Status updates in real time |
+| SC5 - Order tracking - Driver view | Functional | Check assigned orders | Orders appear with location details |
+| SC6 - Delivery driver registration | Functional | Fill out registration form and submit | Registration is successful, and account is created |
+| SC6 - Delivery driver order acceptance | Functional | Accept available order | Order is assigned and removed from available list |
+| SC7 - Customer feedback and rating | Functional | Submit feedback on order or delivery | Rating and feedback are stored and visible to admins |
+| SC8 - Employee shift tracking | Functional | Check remaining shift time | Shift time updates accurately |
+| SC8 - Employee order completion | Functional | Mark order as completed | Order is updated in the system |
+| SC9 - Secure data storage | Security | Insert, update, retrieve, and delete data | Data remains secure and accessible only to authorized users |
+| SC10 - Admin dashboard - Order monitoring | Functional | Check live order statuses | Orders are displayed with current status |
+| SC10 - Admin dashboard - Employee and delivery monitoring | Functional | View employee and driver activity | Dashboard shows real-time data |
+| SC11 - Menu management - Adding menu item | Functional | Admin adds a new menu item | Item appears in customer interface |
+| SC11 - Menu management - Updating menu item | Functional | Admin edits an existing menu item | Changes reflect immediately |
+| SC11 - Menu management - Removing menu item | Functional | Admin deletes a menu item | Item is removed from customer interface |
+| SC12 - Cross-platform compatibility | Usability | Run app on mobile and desktop | Functions correctly across devices |
+| SC13 - Offline functionality - Order tracking | Functional | Check order status without internet | Status is visible, and updates sync when reconnected |
+| SC13 - Offline functionality - Shift monitoring | Functional | Check shift details offline | Data remains accessible and syncs later |
+| SC14 - Real-time notifications - Order updates | Functional | System sends order status notification | Notification appears instantly |
+| SC14 - Real-time notifications - Promotions | Functional | Send promotional notification | Customers receive offers in-app |
+| SC15 - Reporting and analytics | Functional | Generate order trend reports | Report displays accurate order data |
+| SC16 - Customer feedback collection | Functional | Submit a suggestion or complaint | Feedback is stored and visible in admin panel |
+| SC17 - Security - Preventing unauthorized logins | Security | Attempt multiple failed logins | Account is locked temporarily |
+| SC18 - Documentation completeness | Usability | Review documentation | Information is clear and complete |
 
 
 
