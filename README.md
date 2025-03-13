@@ -229,7 +229,91 @@ Lastly, my project also invokes a broader discussion of **data ethics, digital p
 
 # Criteria C: Development 
 
+1. Authentication & Security
+Password Hashing: Uses bcrypt to hash and verify passwords securely.
+Login Attempt Tracking: Implements a failed login attempt counter to prevent brute-force attacks.
+Role-Based Access Control (RBAC): Assigns roles (customer, employee, driver, admin) with different permissions.
+2. Database Management
+SQLite Database: Stores users, orders, menu items, feedback, notifications, and delivery details.
+Schema Validation & Modification: Uses PRAGMA table_info() to check and modify database schema dynamically.
+Data Sanitization: Ensures safe input handling to prevent SQL injection attacks.
+ERD Implementation: Defines relationships between users, orders, drivers, and menu items.
+3. UI Development (Kivy)
+Screen Navigation: Implements ScreenManager with multiple screens (Login, Register, Admin, Customer, etc.).
+Custom UI Components: Uses BoxLayout, Popup, Button, Label, TextInput for an interactive UI.
+Canvas Graphics: Implements Kivy graphics (Color, Line, RoundedRectangle) for UI styling.
+Dynamic UI Updates: Uses Clock.schedule_once for animations and transitions.
+4. Order Management System
+Real-Time Order Tracking: Customers can track order status updates.
+Dine-in & Delivery Options: Allows customers to order food at tables or for home delivery.
+Driver Management: Provides an interface for drivers to accept and complete deliveries.
+Admin Panel: Allows administrators to manage employees, menu items, and orders.
+5. Loyalty Program
+Point Mining System: Customers earn points based on time spent in the app.
+Reward System: Users can redeem points for discounts or purchases.
+Engagement-Based Rewards: Points scale based on user activity (e.g., frequent orders increase point gain).
+6. Offline Functionality
+Local Data Storage: Orders, menu items, and transactions can be managed locally without internet access.
+7. Notifications & Feedback
+Customer Feedback Collection: Stores user feedback for service improvements.
+Push Notifications: Sends order updates, promotions, and loyalty rewards.
+8. Payment System
+Multi-Payment Methods: Supports payments via card or loyalty points.
+Points-Based Transactions: Users can pay fully or partially with accumulated points.
+9. Data Visualization & Reporting
+Order Trends & Analytics: Generates reports on peak order times and customer preferences.
+10. Performance & Optimization
+Optimized Database Queries: Reduces query time for faster data retrieval.
+Responsive UI: Ensures the app runs smoothly across devices.
+This covers all the techniques used in your program. Let me know if you need specific details on any of them! 🚀
 
+
+
+
+
+
+
+You said:
+you need to generalise the program to the code technique behind lets say authentication security is password hashing give me the general term 
+ChatGPT said:
+Here’s a generalized list of the coding techniques used in your program:
+
+1. Authentication & Security
+Password Hashing (bcrypt for secure password storage)
+Role-Based Access Control (RBAC) (User roles with different permissions)
+Rate Limiting (Failed login attempt tracking to prevent brute-force attacks)
+Input Sanitization (Ensuring safe handling of user input)
+2. Database Management
+Relational Database Management (SQLite for structured data storage)
+Schema Validation & Migration (PRAGMA checks for table structure adjustments)
+Data Persistence (Storing user, order, and transaction data permanently)
+3. User Interface & Interaction (Kivy)
+GUI Framework Usage (Kivy for cross-platform UI development)
+Event-Driven Programming (Handling user interactions dynamically)
+Canvas Rendering (Using Kivy graphics for UI elements)
+4. State Management & Navigation
+Finite State Machine (ScreenManager for handling multiple app screens)
+Asynchronous Scheduling (Clock.schedule_once for time-based UI updates)
+5. Order & Transaction Processing
+CRUD Operations (Creating, reading, updating, and deleting data in SQLite)
+Order State Management (Tracking order statuses from "Ongoing" to "Completed")
+Background Processing (Mining points based on user activity)
+6. Data Structures & Algorithms
+Dictionary-Based Caching (Storing session-based cart data)
+List-Based Menu Storage (Efficiently managing menu items)
+Loop-Based Processing (Iterating through user input and database queries)
+7. Offline Functionality
+Local Storage (Data stored and accessed without an internet connection)
+Persistent UI State (Retaining order/cart data across sessions)
+8. Notifications & Feedback
+Message Queue System (Storing unread notifications in a database)
+User Input Handling (Collecting and processing customer feedback)
+9. Payment & Rewards
+Virtual Currency System (Loyalty points as a payment method)
+Transactional Integrity (Ensuring balance updates after payments)
+10. Performance Optimization
+Lazy Loading (Fetching data only when needed for efficiency)
+Indexed Searching (Optimizing queries for menu items and orders)
 
 ---
 
