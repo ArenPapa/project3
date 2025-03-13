@@ -121,24 +121,48 @@ Lastly, my project also invokes a broader discussion of **data ethics, digital p
 
 ## UML diagram 
 
-![image](https://github.com/user-attachments/assets/1d019c96-68c5-4bbf-a06f-14ec032c1036)
+![Untitled](https://github.com/user-attachments/assets/cac99e6c-d473-41b1-a2b8-39a13b92d464)
+
 **Fig.4** UML diagram of proposed solution
 
 
 ## ER diagram 
 
 ![image](https://github.com/user-attachments/assets/bd19f5a9-66b6-4ad6-a07b-ec0270749b8c)
+**Fig.5**
+
+This ER diagram visually represents the structure of the database, showcasing the relationships between different entities and how data flows within the system. It helps in understanding how information is stored, accessed, and managed efficiently. By defining key attributes, entity relationships, and constraints, the diagram provides a clear overview of the database’s organization, ensuring effective data integrity and optimized performance.
+
+### proof of orders: 
+
 <img width="1077" alt="Screenshot 2025-03-13 at 14 08 42" src="https://github.com/user-attachments/assets/53d9f167-b13f-4c97-ab66-43c5e39328cb" />
+
+### proof of menu_items table:
+
 <img width="676" alt="Screenshot 2025-03-13 at 14 08 25" src="https://github.com/user-attachments/assets/9860ecf9-88eb-4347-a28b-a98dda3e7f03" />
+
+### proof of users table: 
+
 <img width="1115" alt="Screenshot 2025-03-13 at 14 09 05" src="https://github.com/user-attachments/assets/c632a25a-9793-41f9-946d-be701bf646ef" />
-<img width="962" alt="Screenshot 2025-03-13 at 14 08 07" src="https://github.com/user-attachments/assets/ce7189e9-b968-4fda-b41e-a82392fe96ea" />
+
+### proof of delivery_orders table:
+
+<img width="508" alt="Screenshot 2025-03-13 at 14 12 45" src="https://github.com/user-attachments/assets/55def0a6-5cf8-48f7-bb20-69f41d9cba0b" />
+
+### proof of notifications table:
+
 <img width="812" alt="Screenshot 2025-03-13 at 14 14 01" src="https://github.com/user-attachments/assets/e1fb6721-7921-4111-9b96-c3c731f1bdcc" />
+
+### proof of drivers table:
+
 <img width="508" alt="Screenshot 2025-03-13 at 14 12 45" src="https://github.com/user-attachments/assets/25029d65-7800-4033-bb77-155d89880327" />
 
+### proof of feedback table: 
+
+<img width="662" alt="Screenshot 2025-03-13 at 14 11 50" src="https://github.com/user-attachments/assets/2839a0a3-e036-4538-ad81-e901565dc455" />
 
 
 
-**Fig.5** ER diagram of database
 
 ## flow diagram
 
