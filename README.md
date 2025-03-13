@@ -128,6 +128,15 @@ Lastly, my project also invokes a broader discussion of **data ethics, digital p
 ## ER diagram 
 
 ![image](https://github.com/user-attachments/assets/bd19f5a9-66b6-4ad6-a07b-ec0270749b8c)
+<img width="1077" alt="Screenshot 2025-03-13 at 14 08 42" src="https://github.com/user-attachments/assets/53d9f167-b13f-4c97-ab66-43c5e39328cb" />
+<img width="676" alt="Screenshot 2025-03-13 at 14 08 25" src="https://github.com/user-attachments/assets/9860ecf9-88eb-4347-a28b-a98dda3e7f03" />
+<img width="1115" alt="Screenshot 2025-03-13 at 14 09 05" src="https://github.com/user-attachments/assets/c632a25a-9793-41f9-946d-be701bf646ef" />
+<img width="962" alt="Screenshot 2025-03-13 at 14 08 07" src="https://github.com/user-attachments/assets/ce7189e9-b968-4fda-b41e-a82392fe96ea" />
+<img width="812" alt="Screenshot 2025-03-13 at 14 14 01" src="https://github.com/user-attachments/assets/e1fb6721-7921-4111-9b96-c3c731f1bdcc" />
+<img width="508" alt="Screenshot 2025-03-13 at 14 12 45" src="https://github.com/user-attachments/assets/25029d65-7800-4033-bb77-155d89880327" />
+
+
+
 
 **Fig.5** ER diagram of database
 
@@ -378,23 +387,30 @@ My client needed a secure and user-friendly login system that prevents unauthori
 
 Client Request:
 The client wanted a system that supports different user roles (customers, delivery personnel, employees, admins).
+
 ➔ Solution: I implemented role-based redirection so that each user type is redirected to the correct interface based on their role.
 
 Problem:
 Unauthorized access attempts or brute-force attacks could compromise user data.
+
 ➔ Solution: I added a rate-limiting mechanism that tracks failed login attempts and temporarily locks the user out after 5 failed attempts, protecting the system from brute-force attacks.
 
 Problem:
 Users needed quick and secure access without compromising performance.
+
 ➔ Solution: I used SQLite for fast, lightweight database handling and bcrypt for secure password verification.
 
 Problem:
 SQL injection vulnerability could allow malicious users to bypass login.
+
 ➔ Solution: I used input sanitization and parameterized queries to prevent SQL injection.
 
 Problem:
 The client wanted a responsive system that provides immediate feedback.
+
 ➔ Solution: I added popups to notify users about login failures, remaining attempts, and lockout status.
+
+---
 
 ## Security Features Implemented
 
@@ -411,7 +427,6 @@ The client wanted a responsive system that provides immediate feedback.
 I'll now go through the second code, adding detailed line-by-line comments and explaining how the coding choices address the client's problems and needs. I'll make sure to include a clear section about why specific decisions were made. Let me get started!
 
 ### **Code 2: Points Mining System**
-Below is the revised version of your points mining code with detailed line-by-line comments and an explanation of why the coding choices were made, linking them to the client’s problems and needs:
 
 ---
 
@@ -464,29 +479,35 @@ def end_session(username):
 My client wanted to introduce a loyalty system that rewards customers for time spent on the platform to increase user engagement and repeat business. Here’s how this code addresses those needs:
 
 1. **Client Request:**  
-   The client needed a system that rewards users based on how long they stay active on the platform to encourage longer engagement.  
+   The client needed a system that rewards users based on how long they stay active on the platform to encourage longer engagement.
+   
    ➔ **Solution:** I created a session-based tracking system using `time.time()` to measure how long users are active and convert that into points.
 
-2. **Problem:**  
-   The client needed a way to track session activity without overloading the database or affecting performance.  
+3. **Problem:**  
+   The client needed a way to track session activity without overloading the database or affecting performance.
+   
    ➔ **Solution:** I used an in-memory dictionary (`active_sessions`) to store session start times, which keeps the process fast and efficient without overloading the database.
 
-3. **Problem:**  
-   Users might exploit the system if points were awarded for very short sessions.  
+5. **Problem:**  
+   Users might exploit the system if points were awarded for very short sessions.
+   
    ➔ **Solution:** I added a condition to calculate points only if the session lasts at least one minute, preventing abuse of the system.
 
-4. **Problem:**  
-   The client needed an easy-to-manage and scalable system for point tracking.  
+7. **Problem:**  
+   The client needed an easy-to-manage and scalable system for point tracking.
+    
    ➔ **Solution:** I used SQLite, which is lightweight and fast, and ensured that the points are stored directly in the user’s record for consistency and easy tracking.
 
-5. **Problem:**  
-   The client wanted to motivate users to engage with the platform regularly.  
+9. **Problem:**  
+   The client wanted to motivate users to engage with the platform regularly.
+   
    ➔ **Solution:** By awarding points based on session time, users are motivated to spend more time on the platform, leading to increased engagement and repeat visits.
 
 ---
 
 ### **Line-by-Line Explanation**
 #### **1. Imports and Global Variables**
+
 ```python
 import time
 import sqlite3
@@ -501,6 +522,7 @@ active_sessions = {}
 ---
 
 #### **2. Start Session Function**
+
 ```python
 def start_session(username):
     if username not in active_sessions:
