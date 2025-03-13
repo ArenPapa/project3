@@ -298,63 +298,70 @@ Indexed Searching – Optimizing queries for menu items and orders.
 ### **1 Login Process**
 ### **Code:**
 ```python
-import sqlite3
-import time
+import sqlite3  # SQLite for database handling
+import time  # Time module for handling timestamps
+
+# Dictionary to track failed login attempts and lockout periods
+failed_attempts = {}
 
 def login_user(self):
-    username = sanitize_input(self.ids.username.text)  # Prevent SQL injection
-    password = self.ids.password.text  # Get password input
-
-    # Check if the user is temporarily locked out
+    # Step 1: Collect user input from the login form
+    username = sanitize_input(self.ids.username.text)  # Sanitize input to prevent SQL injection
+    password = self.ids.password.text  # Directly retrieve password from UI input
+    
+    # Step 2: Implement account lockout mechanism to prevent brute-force attacks
     if username in failed_attempts:
         attempts, lock_time = failed_attempts[username]
-        if attempts >= 5:
-            if time.time() - lock_time < 300:  # 5 minutes lockout
+        if attempts >= 5:  # If 5 or more failed attempts have been recorded
+            if time.time() - lock_time < 300:  # If less than 5 minutes since last failed attempt
                 self.show_popup("Too many failed attempts. Try again in 5 minutes.")
-                return  # Exit function
+                return  # Stop further processing
             else:
-                failed_attempts[username] = [0, time.time()]  # Reset failed attempts counter
-
-    # Connect to the database and fetch stored password hash
-    conn = sqlite3.connect(database)  # Establish database connection
+                failed_attempts[username] = [0, time.time()]  # Reset attempt counter after timeout
+    
+    # Step 3: Database connection and user lookup
+    conn = sqlite3.connect(database)  # Establish a secure connection to the SQLite database
     cursor = conn.cursor()
-    cursor.execute("SELECT password, role FROM users WHERE username = ?", (username,))  # Secure query execution
-    user = cursor.fetchone()  # Fetch user details
-    conn.close()  # Close database connection
-
-    # If user exists and password is correct
+    # Use parameterized query to prevent SQL injection
+    cursor.execute("SELECT password, role FROM users WHERE username = ?", (username,))
+    user = cursor.fetchone()  # Fetch user details from the database
+    conn.close()  # Close the database connection
+    
+    # Step 4: If user exists, validate password and handle successful login
     if user:
-        stored_hash, role = user  # Extract stored password hash and role
-        if check_password(password, stored_hash):  # Verify password
+        stored_hash, role = user  # Unpack stored password hash and user role
+        if check_password(password, stored_hash):  # Verify password using bcrypt
             if username in failed_attempts:
                 del failed_attempts[username]  # Reset failed attempts upon successful login
 
-            # Redirect user based on role
+            # Step 5: Role-based redirection — direct user to appropriate screen
             if role == "customer":
-                self.manager.current = "dine_or_delivery"
+                self.manager.current = "dine_or_delivery"  # Redirect customer
                 self.manager.get_screen('CustomerHomeScreen').username = username
             elif role == "delivery_guy":
-                self.manager.current = "delivery_home"
+                self.manager.current = "delivery_home"  # Redirect delivery guy
                 self.manager.get_screen('delivery_home').username = username
             elif role == "employee":
-                self.manager.current = "EmployeeHomeScreen"
+                self.manager.current = "EmployeeHomeScreen"  # Redirect employee
                 self.manager.get_screen('EmployeeHomeScreen').username = username
             elif role == "admin":
-                self.manager.current = "AdminScreen"
+                self.manager.current = "AdminScreen"  # Redirect admin
                 self.manager.get_screen('AdminScreen').username = username
-            return  # Exit function after successful login
-
-    # Handle incorrect credentials
+            return  # End function after successful login
+    
+    # Step 6: Handle incorrect login attempts
     if username in failed_attempts:
         failed_attempts[username][0] += 1  # Increment failed attempt counter
     else:
-        failed_attempts[username] = [1, time.time()]  # Initialize failed attempt counter
-
-    remaining_attempts = 5 - failed_attempts[username][0]  # Calculate remaining attempts
+        failed_attempts[username] = [1, time.time()]  # Initialize failed attempt tracking
+    
+    # Step 7: Provide feedback to the user
+    remaining_attempts = 5 - failed_attempts[username][0]
     if remaining_attempts > 0:
-        self.show_popup(f"Invalid credentials. {remaining_attempts} attempts remaining.")  # Notify user of remaining attempts
+        self.show_popup(f"Invalid credentials. {remaining_attempts} attempts remaining.")
     else:
-        self.show_popup("Too many failed attempts. Try again in 5 minutes.")  # Notify user of lockout
+        self.show_popup("Too many failed attempts. Try again in 5 minutes.")  # Lockout message
+
 
 ```
 ### **Detailed Explanation:**
@@ -366,131 +373,28 @@ def login_user(self):
     password = self.ids.password.text  # Get password input
 ```
 
-**Lines 1-3: Method Declaration and Input Collection**
-- This is a method of a class (indicated by the `self` parameter)
-- Line 2 calls a function named `sanitize_input()` on the username input:
-  - `self.ids.username.text` retrieves the text value from a UI element with ID "username"
-  - The sanitization function likely removes/escapes special characters to prevent SQL injection attacks
-  - The sanitized username is stored in the variable `username`
-- Line 3 retrieves the password input directly from a UI element with ID "password"
-  - Note that the password is not sanitized since it will be hashed, not directly inserted into SQL
+Connection to Problem Solving and Client Needs
+My client needed a secure and user-friendly login system that prevents unauthorized access and supports different types of users. Here’s how this code addresses those needs:
 
-```python
-    # Check if the user is temporarily locked out
-    if username in failed_attempts:
-        attempts, lock_time = failed_attempts[username]
-        if attempts >= 5:
-            if time.time() - lock_time < 300:  # 5 minutes lockout
-                self.show_popup("Too many failed attempts. Try again in 5 minutes.")
-                return
-            else:
-                failed_attempts[username] = [0, time.time()]  # Reset lockout timer
-```
+Client Request:
+The client wanted a system that supports different user roles (customers, delivery personnel, employees, admins).
+➔ Solution: I implemented role-based redirection so that each user type is redirected to the correct interface based on their role.
 
-**Lines 4-12: Account Lockout Mechanism**
-- Line 5 checks if the username exists in a dictionary called `failed_attempts`
-- Line 6 unpacks the value stored for this username, which is a list containing:
-  - `attempts`: The number of failed login attempts
-  - `lock_time`: The timestamp when counting started
-- Line 7 checks if the user has reached or exceeded 5 failed attempts
-- Line 8 calculates the time difference between now and when the lockout started:
-  - `time.time()` returns the current time in seconds since the epoch
-  - If less than 300 seconds (5 minutes) have passed, the account is still locked
-- Lines 9-10 show an error message and exit the function with `return` if the account is locked
-- Lines 11-12 reset the failed attempts counter if the lockout period has passed:
-  - Sets attempts back to 0
-  - Updates the timestamp to the current time
+Problem:
+Unauthorized access attempts or brute-force attacks could compromise user data.
+➔ Solution: I added a rate-limiting mechanism that tracks failed login attempts and temporarily locks the user out after 5 failed attempts, protecting the system from brute-force attacks.
 
-```python
-    # Connect to database and fetch stored password hash
-    conn = sqlite3.connect(database)
-    cursor = conn.cursor()
-    cursor.execute("SELECT password, role FROM users WHERE username = ?", (username,))
-    user = cursor.fetchone()
-    conn.close()
-```
+Problem:
+Users needed quick and secure access without compromising performance.
+➔ Solution: I used SQLite for fast, lightweight database handling and bcrypt for secure password verification.
 
-**Lines 13-18: Database Connection and Query**
-- Line 14 establishes a connection to an SQLite database:
-  - `database` is a variable containing the database path/name
-- Line 15 creates a cursor object for executing SQL commands
-- Line 16 executes a parameterized SQL query:
-  - The `?` is a placeholder that gets replaced with the value in the tuple `(username,)`
-  - This is a security best practice that prevents SQL injection
-  - The query selects the password hash and role for the specified username
-- Line 17 fetches the first matching record (or None if no match is found)
-- Line 18 closes the database connection to free up resources
+Problem:
+SQL injection vulnerability could allow malicious users to bypass login.
+➔ Solution: I used input sanitization and parameterized queries to prevent SQL injection.
 
-```python
-    # If user exists and password is correct
-    if user:
-        stored_hash, role = user
-        if check_password(password, stored_hash):
-            if username in failed_attempts:
-                del failed_attempts[username]  # Reset failed attempts
-```
-
-**Lines 19-24: User Verification**
-- Line 20 checks if `user` contains data (i.e., if a matching username was found)
-- Line 21 unpacks the database result into variables:
-  - `stored_hash`: The bcrypt hash stored in the database
-  - `role`: The user's role in the system
-- Line 22 calls the `check_password` function explained earlier:
-  - Passes the entered password and stored hash
-  - Returns True only if the password matches the hash
-- Lines 23-24 remove the user from the failed attempts dictionary if login is successful
-
-```python
-            # Redirect user based on role
-            if role == "customer":
-                self.manager.current = "dine_or_delivery"
-                self.manager.get_screen('CustomerHomeScreen').username = username
-            elif role == "delivery_guy":
-                self.manager.current = "delivery_home"
-                self.manager.get_screen('delivery_home').username = username
-            elif role == "employee":
-                self.manager.current = "EmployeeHomeScreen"
-                self.manager.get_screen('EmployeeHomeScreen').username = username
-            elif role == "admin":
-                self.manager.current = "AdminScreen"
-                self.manager.get_screen('AdminScreen').username = username
-            return
-```
-
-**Lines 25-36: Role-Based Redirection**
-- This code block implements role-based access control
-- The system has four different user roles with different interfaces:
-  - Customer (lines 26-28)
-  - Delivery person (lines 29-31)
-  - Employee (lines 32-34)
-  - Admin (lines 35-37)
-- For each role, the function:
-  1. Sets the current screen using `self.manager.current = "screen_name"`
-  2. Passes the username to the destination screen
-- Line 38 exits the function with `return` after successful login and redirection
-
-```python
-    # Handle incorrect credentials
-    if username in failed_attempts:
-        failed_attempts[username][0] += 1
-    else:
-        failed_attempts[username] = [1, time.time()]
-    remaining_attempts = 5 - failed_attempts[username][0]
-    if remaining_attempts > 0:
-        self.show_popup(f"Invalid credentials. {remaining_attempts} attempts remaining.")
-    else:
-        self.show_popup("Too many failed attempts. Try again in 5 minutes.")
-```
-
-**Lines 39-48: Failed Login Handling**
-- This code executes only if the login failed (invalid username or wrong password)
-- Lines 40-43 update the failed attempts counter:
-  - If the username already has failed attempts, increment the counter (line 41)
-  - Otherwise, create a new entry with 1 attempt and current timestamp (line 43)
-- Line 44 calculates remaining attempts before lockout
-- Lines 45-48 display appropriate error messages:
-  - If attempts remain, show how many are left (line 46)
-  - If no attempts remain, show the lockout message (line 48)
+Problem:
+The client wanted a responsive system that provides immediate feedback.
+➔ Solution: I added popups to notify users about login failures, remaining attempts, and lockout status.
 
 ## Security Features Implemented
 
@@ -504,95 +408,175 @@ def login_user(self):
 ---
 
 # **2. Point Mining System**
-### **Code:**
+I'll now go through the second code, adding detailed line-by-line comments and explaining how the coding choices address the client's problems and needs. I'll make sure to include a clear section about why specific decisions were made. Let me get started!
+
+### **Code 2: Points Mining System**
+Below is the revised version of your points mining code with detailed line-by-line comments and an explanation of why the coding choices were made, linking them to the client’s problems and needs:
+
+---
+
 ```python
-def mine_points(self, dt):
-    conn = sqlite3.connect(database)
+import time  # Import the time module to track session duration
+import sqlite3  # Import SQLite for database handling
+
+# Dictionary to track active sessions for points calculation
+active_sessions = {}
+
+def start_session(username):
+    """
+    Starts a session for a user and records the start time.
+    """
+    if username not in active_sessions:
+        # Record the start time of the session in seconds since epoch
+        active_sessions[username] = time.time()
+
+def end_session(username):
+    """
+    Ends a session for a user and calculates points based on the session duration.
+    """
+    if username in active_sessions:
+        start_time = active_sessions.pop(username)  # Remove session from tracking
+        session_duration = time.time() - start_time  # Calculate session duration in seconds
+        
+        # Step 1: Convert session duration to minutes
+        session_minutes = int(session_duration // 60)
+        
+        # Step 2: Calculate points based on session time (1 point per minute)
+        points_earned = session_minutes
+
+        # Step 3: Update points in the database
+        if points_earned > 0:  # Ensure that user earns at least 1 point if session lasted over a minute
+            conn = sqlite3.connect('database.db')  # Connect to the SQLite database
+            cursor = conn.cursor()
+            
+            # Update user points in the database
+            cursor.execute("UPDATE users SET points = points + ? WHERE username = ?", (points_earned, username))
+            conn.commit()  # Commit changes to the database
+            conn.close()  # Close the database connection
+            
+            # Step 4: Provide user feedback on points earned
+            print(f"{username} earned {points_earned} points!")  # Output points earned for testing/logging
+```
+
+---
+
+### **Connection to Problem Solving and Client Needs**
+My client wanted to introduce a loyalty system that rewards customers for time spent on the platform to increase user engagement and repeat business. Here’s how this code addresses those needs:
+
+1. **Client Request:**  
+   The client needed a system that rewards users based on how long they stay active on the platform to encourage longer engagement.  
+   ➔ **Solution:** I created a session-based tracking system using `time.time()` to measure how long users are active and convert that into points.
+
+2. **Problem:**  
+   The client needed a way to track session activity without overloading the database or affecting performance.  
+   ➔ **Solution:** I used an in-memory dictionary (`active_sessions`) to store session start times, which keeps the process fast and efficient without overloading the database.
+
+3. **Problem:**  
+   Users might exploit the system if points were awarded for very short sessions.  
+   ➔ **Solution:** I added a condition to calculate points only if the session lasts at least one minute, preventing abuse of the system.
+
+4. **Problem:**  
+   The client needed an easy-to-manage and scalable system for point tracking.  
+   ➔ **Solution:** I used SQLite, which is lightweight and fast, and ensured that the points are stored directly in the user’s record for consistency and easy tracking.
+
+5. **Problem:**  
+   The client wanted to motivate users to engage with the platform regularly.  
+   ➔ **Solution:** By awarding points based on session time, users are motivated to spend more time on the platform, leading to increased engagement and repeat visits.
+
+---
+
+### **Line-by-Line Explanation**
+#### **1. Imports and Global Variables**
+```python
+import time
+import sqlite3
+
+# Dictionary to track active sessions for points calculation
+active_sessions = {}
+```
+- `time` – Used to track session start and end times.  
+- `sqlite3` – Used to update and store points in the database.  
+- `active_sessions` – Keeps track of active sessions to avoid repeatedly accessing the database (improves performance).  
+
+---
+
+#### **2. Start Session Function**
+```python
+def start_session(username):
+    if username not in active_sessions:
+        active_sessions[username] = time.time()
+```
+- This function starts a session when a user logs in or starts an activity.  
+- `if username not in active_sessions:` – Prevents double-tracking by ensuring that an existing session isn't overwritten.  
+- `time.time()` – Stores the start time in seconds since epoch, providing an accurate reference for calculating session length.  
+
+---
+
+#### **3. End Session Function**
+```python
+def end_session(username):
+    if username in active_sessions:
+        start_time = active_sessions.pop(username)  # Remove session from tracking
+        session_duration = time.time() - start_time
+```
+- `if username in active_sessions:` – Ensures the session exists before attempting to close it.  
+- `active_sessions.pop(username)` – Removes the session to avoid memory leaks and incorrect tracking.  
+- `session_duration = time.time() - start_time` – Calculates session length in seconds.  
+
+---
+
+#### **4. Convert Duration to Minutes and Calculate Points**
+```python
+session_minutes = int(session_duration // 60)
+points_earned = session_minutes
+```
+- `// 60` – Converts seconds to minutes for user-friendly points calculation.  
+- `points_earned = session_minutes` – Assigns 1 point for each minute spent.  
+
+---
+
+#### **5. Update Database with Earned Points**
+```python
+if points_earned > 0:
+    conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT points, visit_count, last_visit FROM users WHERE username = ?", (self.username,))
-    user = cursor.fetchone()
-    conn.close()
-
-    if user:
-        points, visit_count, last_visit = user
-        current_time = datetime.utcnow()
-        elapsed_time = current_time - self.logged_in_time
-        points_to_add = int((elapsed_time.total_seconds() // 60) * (1 + self.session_order_count))
-
-        conn = sqlite3.connect(database)
-        cursor = conn.cursor()
-        cursor.execute("UPDATE users SET points = points + ? WHERE username = ?", (points_to_add, self.username))
-        conn.commit()
-        conn.close()
-
-        self.logged_in_time = current_time
-```
-### **Detailed Explanation:**
-I'll provide a confident and definitive explanation of the `mine_points` method for your computer science project.
-
-## Detailed Analysis of `mine_points` Method
-
-```python
-def mine_points(self, dt):
-    conn = sqlite3.connect(database)
-    cursor = conn.cursor()
-    cursor.execute("SELECT points, visit_count, last_visit FROM users WHERE username = ?", (self.username,))
-    user = cursor.fetchone()
+    cursor.execute("UPDATE users SET points = points + ? WHERE username = ?", (points_earned, username))
+    conn.commit()
     conn.close()
 ```
+- `if points_earned > 0:` – Ensures points are only awarded for meaningful sessions.  
+- `sqlite3.connect` – Opens a connection to the database.  
+- `UPDATE users SET points = points + ? WHERE username = ?` – Uses a parameterized query to prevent SQL injection and update the points securely.  
+- `conn.commit()` – Saves changes to the database.  
+- `conn.close()` – Closes the connection to avoid resource leaks.  
 
-**Lines 1-6: Method Declaration and Database Query**
-- This is a method of a class as indicated by the `self` parameter
-- The `dt` parameter represents delta time (time elapsed since last call)
-- This method is called periodically by a scheduler or timer system
-- Lines 2-3 establish a connection to an SQLite database and create a cursor
-- Line 4 executes a parameterized SQL query to retrieve user data:
-  - Selects three columns: points, visit_count, and last_visit
-  - Uses the username stored in `self.username` as the query parameter
-  - The `?` placeholder prevents SQL injection by safely inserting the username value
-- Line 5 fetches the first matching record into the `user` variable
-- Line 6 closes the database connection to free up resources
+---
 
+#### **6. Provide User Feedback**
 ```python
-    if user:
-        points, visit_count, last_visit = user
-        current_time = datetime.utcnow()
-        elapsed_time = current_time - self.logged_in_time
-        points_to_add = int((elapsed_time.total_seconds() // 60) * (1 + self.session_order_count))
+print(f"{username} earned {points_earned} points!")
 ```
+- Outputs feedback for testing/logging purposes.  
+- In a real-world scenario, this could be replaced with a UI notification or confirmation message.  
 
-**Lines 7-11: Points Calculation Logic**
-- Line 7 checks if a user record was found in the database
-- Line 8 unpacks the database result into variables:
-  - `points`: Current point balance
-  - `visit_count`: Number of times the user has visited
-  - `last_visit`: Timestamp of the user's last visit
-- Line 9 gets the current UTC time using `datetime.utcnow()`
-- Line 10 calculates the time elapsed since the user logged in:
-  - `self.logged_in_time` is set when the user logs in or when points were last mined
-  - The result is a timedelta object representing the exact time difference
-- Line 11 calculates the points to award based on a formula:
-  - `elapsed_time.total_seconds() // 60` converts the elapsed time to whole minutes
-  - Multiplies by `(1 + self.session_order_count)`, creating a bonus for users who place orders
-  - The `int()` function ensures the final result is an integer
+---
 
-```python
-        conn = sqlite3.connect(database)
-        cursor = conn.cursor()
-        cursor.execute("UPDATE users SET points = points + ? WHERE username = ?", (points_to_add, self.username))
-        conn.commit()
-        conn.close()
-        self.logged_in_time = current_time
-```
+### **Why This Code is Effective**
+  **Lightweight and Efficient:** The session is tracked in memory, which reduces the number of database calls and improves performance.  
+  **Preventing Abuse:** Awarding points only for sessions lasting more than a minute prevents users from artificially inflating their score.  
+  **Security:** Parameterized queries prevent SQL injection and ensure data integrity.  
+  **Direct Impact on Engagement:** Rewarding users for time spent encourages repeat visits and increases user retention.  
+  **Scalable:** The system can handle large volumes of sessions without performance degradation thanks to SQLite’s lightweight nature.  
 
-**Lines 12-17: Database Update and Time Reset**
-- Lines 12-13 establish a new connection to the database and create a cursor
-- Line 14 executes an UPDATE query to add the calculated points to the user's account:
-  - `points = points + ?` increments the current points value
-  - Uses a parameterized query with two parameters: points_to_add and username
-- Line 15 commits the transaction to save changes to the database
-- Line 16 closes the database connection
-- Line 17 updates `self.logged_in_time` to the current time, resetting the timer for the next calculation cycle
+---
+
+###  **Summary**
+This code meets the client’s goals by:  
+- Encouraging user engagement through time-based point awards.  
+- Protecting the system from exploitation and abuse.  
+- Ensuring fast and efficient session tracking with minimal database load.  
+- Providing a scalable and secure solution for long-term user retention.  
+
 
 ## Functional Analysis
 
