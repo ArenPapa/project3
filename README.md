@@ -191,21 +191,21 @@ This ER diagram visually represents the structure of the database, showcasing th
 | 1  | Discuss client requirements and expectations. | Clear understanding of client needs for system design. | 90 min | Feb 10, 2025 | A |
 | 2  | Write down success criteria based on client discussion. | Document outlining measurable goals and expectations. | 90 min | Feb 10, 2025 | A |
 | 3  | Contact client for approval of success criteria. | Ensure alignment before development begins. | 50 min | Feb 11, 2025 | A |
-| 4  | Draw a system architecture diagram. | Visual representation of system components and their interactions. | 120 min | Feb 11, 2025 | A |
-| 5  | Plan a wireframe diagram for the user interface. | Blueprint for application layout and navigation flow. | 150 min | Feb 12, 2025 | A |
-| 6  | Plan flow diagrams for key processes (ordering, payments, delivery, etc.). | Clear representation of how users will interact with the system. | 160 min | Feb 12, 2025 | A |
-| 7  | Design database schema and plan relationships. | Structured database design to optimize performance. | 180 min | Feb 13, 2025 | A |
-| 8  | Create an ER diagram for classes and database interactions. | Clear data model representing relationships between entities. | 140 min | Feb 13, 2025 | A |
-| 9  | Define user roles and authentication requirements. | Clear role-based access for customers, employees, and drivers. | 90 min | Feb 14, 2025 | A |
-| 10 | Implement secure authentication system. | Secure login with password hashing and role-based access. | 150 min | Feb 15, 2025 | B |
-| 11 | Design customer ordering interface (dine-in & delivery). | User-friendly interface for placing orders via mobile devices. | 120 min | Feb 17, 2025 | B |
-| 12 | Integrate multiple payment methods. | Customers can pay via card or loyalty points. | 180 min | Feb 21, 2025 | B |
-| 13 | Develop loyalty program. | Customers can earn and redeem points for rewards. | 160 min | Feb 24, 2025 | B |
-| 14 | Implement order tracking system. | Real-time order status updates for customers. | 140 min | Feb 26, 2025 | B |
-| 15 | Design and develop a driver interface. | Drivers can accept orders and track earnings. | 180 min | Mar 1, 2025 | B |
+| 4  | Draw a system architecture diagram. | Visual representation of system components and their interactions. | 120 min | Feb 11, 2025 | B |
+| 5  | Plan a wireframe diagram for the user interface. | Blueprint for application layout and navigation flow. | 150 min | Feb 12, 2025 | B |
+| 6  | Plan flow diagrams for key processes (ordering, payments, delivery, etc.). | Clear representation of how users will interact with the system. | 160 min | Feb 12, 2025 | B |
+| 7  | Design database schema and plan relationships. | Structured database design to optimize performance. | 180 min | Feb 13, 2025 | B |
+| 8  | Create an ER diagram for classes and database interactions. | Clear data model representing relationships between entities. | 140 min | Feb 13, 2025 | B |
+| 9  | Define user roles and authentication requirements. | Clear role-based access for customers, employees, and drivers. | 90 min | Feb 14, 2025 | B |
+| 10 | Implement secure authentication system. | Secure login with password hashing and role-based access. | 150 min | Feb 15, 2025 | C |
+| 11 | Design customer ordering interface (dine-in & delivery). | User-friendly interface for placing orders via mobile devices. | 120 min | Feb 17, 2025 | C |
+| 12 | Integrate multiple payment methods. | Customers can pay via card or loyalty points. | 180 min | Feb 21, 2025 | C |
+| 13 | Develop loyalty program. | Customers can earn and redeem points for rewards. | 160 min | Feb 24, 2025 | C |
+| 14 | Implement order tracking system. | Real-time order status updates for customers. | 140 min | Feb 26, 2025 | C |
+| 15 | Design and develop a driver interface. | Drivers can accept orders and track earnings. | 180 min | Mar 1, 2025 | C |
 | 16 | Add rating and feedback system. | Customers can review orders and provide feedback. | 120 min | Mar 3, 2025 | C |
-| 17 | Implement employee shift tracking and order completion. | Employees can log shifts and mark orders as completed. | 110 min | Mar 5, 2025 | B |
-| 18 | Set up SQLite database for order and customer data. | Secure storage and efficient data retrieval. | 130 min | Mar 7, 2025 | B |
+| 17 | Implement employee shift tracking and order completion. | Employees can log shifts and mark orders as completed. | 110 min | Mar 5, 2025 | C |
+| 18 | Set up SQLite database for order and customer data. | Secure storage and efficient data retrieval. | 130 min | Mar 7, 2025 | C |
 | 19 | Create admin dashboard for monitoring operations. | Real-time monitoring of orders, employees, and deliveries. | 100 min | Mar 8, 2025 | C |
 | 20 | Develop menu management system. | Admins can add, update, or remove menu items. | 90 min | Mar 9, 2025 | C |
 | 21 | Implement offline functionality for key features. | Ordering and tracking remain available during internet downtime. | 150 min | Mar 9, 2025 | C |
@@ -213,14 +213,14 @@ This ER diagram visually represents the structure of the database, showcasing th
 | 23 | Implement reporting features for order trends and insights. | Generate reports on peak order times and customer preferences. | 140 min | Mar 9, 2025 | C |
 | 24 | Integrate feedback collection system. | Collect insights from customers for service improvements. | 130 min | Mar 9, 2025 | C |
 | 25 | Implement security measures for login attempts. | Protect user accounts from unauthorized access. | 90 min | Mar 9, 2025 | B |
-| 26 | Optimize UI responsiveness for different screen sizes. | Ensure seamless experience across mobile and desktop devices. | 170 min | Mar 9, 2025 | B |
+| 26 | Optimize UI responsiveness for different screen sizes. | Ensure seamless experience across mobile and desktop devices. | 170 min | Mar 9, 2025 | C |
 | 27 | Debug and fix any reported system crashes or UI glitches. | Stable and error-free application performance. | 160 min | Mar 9, 2025 | C |
 | 28 | Conduct user testing with simulated orders and interactions. | Identify areas for improvement before final release. | 180 min | Mar 9, 2025 | C |
 | 29 | Implement search and filter options for the menu. | Customers can quickly find and select food items. | 120 min | Mar 9, 2025 | C |
 | 30 | Optimize database queries for faster performance. | Reduce loading times for orders, menus, and reports. | 160 min | Mar 9, 2025 | B |
 | 31 | Ensure accessibility compliance for visually impaired users. | Make the app user-friendly for a broader audience. | 130 min | Mar 9, 2025 | C |
-| 32 | Conduct final security audit and penetration testing. | Ensure system is secure against potential threats. | 180 min | Mar 9, 2025 | B |
-| 33 | Finalize project documentation and impact assessment. | Comprehensive documentation on features and future improvements. | 110 min | Mar 9, 2025 | D |
+| 32 | Conduct final security audit and penetration testing. | Ensure system is secure against potential threats. | 180 min | Mar 9, 2025 | C |
+| 33 | Finalize project documentation and impact assessment. | Comprehensive documentation on features and future improvements. | 110 min | Mar 9, 2025 | B |
 
 
 ## Test Plan
