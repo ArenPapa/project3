@@ -111,18 +111,18 @@ Lastly, my project also invokes a broader discussion of **data ethics, digital p
 ## Wireframe
 
 ![Untitled design](https://github.com/user-attachments/assets/ffa97312-cd5b-47f1-9ed7-97d72c561f5f)
-**Fig.2**  Wireframe of the application design
+**Fig.2**  The wireframe serves as a blueprint for the application's user interface, outlining the layout, navigation flow, and key elements of each screen. It provides a visual representation of how users will interact with the app, ensuring a seamless and intuitive experience. By defining the placement of buttons, text fields, and other UI components, the wireframe helps streamline the design and development process, ensuring consistency and efficiency in building the final product.
 
 ## flowchart
 
 ![image](https://github.com/user-attachments/assets/56c9e0ca-addd-464a-be32-5c587e3057ea)
-**Fig.3** describing the ordering process of the sold product
+**Fig.3** This flow diagram illustrates the step-by-step process of ordering a product, ensuring a smooth and efficient transaction from selection to delivery. It begins with the customer browsing the available products and adding their chosen items to the cart. Once the order is confirmed, payment is processed through a secure gateway. The system then verifies the payment and updates inventory accordingly. After confirmation, the order is forwarded to the warehouse or seller for packaging and dispatch. Finally, the product is shipped, and the customer receives tracking information to monitor delivery progress. This structured flow ensures a seamless purchasing experience while maintaining order accuracy and efficiency.
 
 ## UML diagram 
 
 ![Untitled](https://github.com/user-attachments/assets/cac99e6c-d473-41b1-a2b8-39a13b92d464)
 
-**Fig.4** UML diagram of proposed solution
+**Fig.4** This UML diagram presents the key classes, their attributes, and the relationships between them, illustrating the system's structure and functionality. It defines how different components interact, including data storage, user actions, and processing logic. By showcasing associations, inheritance, and dependencies, the diagram provides a clear overview of the system architecture, ensuring a well-organized and efficient design.
 
 
 ## ER diagram 
@@ -167,19 +167,19 @@ This ER diagram visually represents the structure of the database, showcasing th
 
 ![image](https://github.com/user-attachments/assets/1ea0871b-0db6-4e97-9c5a-8813e6ca100e)
 
-**Fig.6** flow diagram login function
+**Fig.6** This flow diagram outlines the step-by-step process of the login function, ensuring secure and efficient user authentication. It begins when a user enters their credentials (username/email and password). The system then validates the input, checking for correctness and completeness. If the credentials are valid, they are compared with stored data in the database. If authentication is successful, the user gains access to their respective dashboard based on their role (e.g., Customer, Employee, or Delivery Guy). If authentication fails, an error message is displayed, prompting the user to retry or reset their password. This structured flow enhances security and ensures a smooth user experience.
 
 ## flow diagram
 
 ![image](https://github.com/user-attachments/assets/dddb5425-db92-40c2-bb6b-e8b702c921cb)
 
-**Fig.7** flow diagram Register function
+**Fig.7** This flow diagram illustrates the step-by-step process of user registration, ensuring secure account creation. The process begins when a new user enters their details, such as name, email, password, and role (e.g., Customer, Delivery Guy). The system first validates the input to check for completeness, proper formatting, and uniqueness (e.g., ensuring the email is not already registered). If validation fails, the user is prompted to correct the errors. Once validated, the system securely stores the user information in the database, encrypting sensitive data like passwords. Upon successful registration, a confirmation message is displayed, and the user may receive a verification email to activate their account. This structured flow ensures a smooth onboarding experience while maintaining data integrity and security.
 
 ## flow diagram
 
 ![image](https://github.com/user-attachments/assets/75f03f3e-111d-4b99-8ae1-0c798cb8f362)
 
-**Fig.8** flow diagram Update points function
+**Fig.8** This flow diagram outlines the process of updating a user's points based on their activities or transactions within the system. The process begins when a trigger event occurs, such as a completed purchase, referral, or reward-based action. The system retrieves the user's current points from the database and calculates the new total based on predefined rules (e.g., points per dollar spent or bonus points for referrals). If the update is valid, the system stores the new point balance in the database and displays a confirmation message to the user. In case of an error (e.g., invalid transaction or system failure), the user receives a notification, and the system reverts to the previous balance. This structured approach ensures accurate tracking, maintains data integrity, and enhances user engagement with the points system.
 
 
 ## Record of Tasks
